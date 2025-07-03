@@ -153,7 +153,7 @@ function deleteBranch(branch: Branch) {
 </script>
 
 <template>
-  <div class="p-4 md:p-6 bg-white shadow-md rounded-lg">
+  <div class="p-4 md:p-6 bg-surface-100 dark:bg-surface-800 shadow-md rounded-lg">
     <!-- Header Section -->
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
       <div class="flex items-center gap-2">

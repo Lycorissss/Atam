@@ -6,14 +6,7 @@ console.log('Core layer loaded')
 
 export default defineNuxtConfig({
   extends: [
-    'modules/auth',
-    'modules/announcement',
-    'modules/branch',
-    'modules/denom',
-    'modules/home',
-    'modules/registration',
-    'modules/report',
-    'modules/voucher',
+    // 'modules/barokah',
   ],
 
   future: {
@@ -60,7 +53,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Alfamart - Voucher',
+      title: 'Atams - Link',
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
@@ -103,7 +96,7 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    voucherUrl: process.env.NUXT_VOUCHER_API_URL,
+    atamsUrl: process.env.NUXT_ATAMS_API_URL,
     public: {
       // Add any public config here if needed
     },
