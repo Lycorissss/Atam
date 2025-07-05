@@ -6,7 +6,7 @@ console.log('Core layer loaded')
 
 export default defineNuxtConfig({
   extends: [
-    // 'modules/barokah',
+    'modules/auth',
   ],
 
   future: {
