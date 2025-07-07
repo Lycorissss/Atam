@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     // 'primevue/resources/primevue.min.css', // This line is usually not needed with the Nuxt module + @primeuix/themes
     // 'primeicons/primeicons.css', // Also often handled by the PrimeVue Nuxt module
     path.resolve(__dirname, 'app/assets/css/main.css'), // Use absolute path
+    path.resolve(__dirname, 'app/assets/css/atam.css'), // Use absolute path
     // '~/assets/css/main.css', // Your custom CSS for theme overrides and other styles
   ],
 
