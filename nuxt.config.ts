@@ -1,6 +1,6 @@
+import path from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
 import presetIcons from '@unocss/preset-icons'
-import path from 'path'
 
 console.log('Core layer loaded')
 
@@ -98,6 +98,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     atamsUrl: process.env.NUXT_ATAMS_API_URL,
+    atamsAuthUrl: process.env.NUXT_ATAMS_AUTH_API_URL,
     public: {
       // Add any public config here if needed
     },
@@ -113,7 +114,6 @@ export default defineNuxtConfig({
   image: {
     provider: 'ipx',
     ipx: {
-      sharp: false,
     },
   },
 
@@ -137,7 +137,29 @@ export default defineNuxtConfig({
     // This is usually automatic, but you can be explicit
     dirs: [
       'composables',
-      'composables/**'
-    ]
-  }
+      'composables/**',
+      'modules/**/composables',
+      'modules/**/composables/**',
+    ],
+    autoImport: true,
+    presets: [
+      {
+        from: 'vee-validate',
+        imports: [
+          {
+            name: 'Form',
+            as: 'VeeForm',
+          },
+          {
+            name: 'Field',
+            as: 'VeeField',
+          },
+          {
+            name: 'ErrorMessage',
+            as: 'VeeErrorMessage',
+          },
+        ],
+      },
+    ],
+  },
 })
