@@ -14,21 +14,25 @@ function handleLogout() {
 
 <template>
   <div class="text-center py-20">
-    <h1 class="text-3xl font-semibold mb-8">
-      Example Page
-    </h1>
-
+    <h1 class="text-3xl font-semibold mb-8">Example Page</h1>
     <p class="mb-6">
       This is an example page to demonstrate the structure of a Vue component.
     </p>
 
-    <CoreButton
-      label="Logout"
-      icon="i-mdi-logout"
-      class="mt-4"
-      severity="danger"
-      @click="handleLogout"
-    />
+    <div class="space-x-4">
+      <CoreButton
+        label="Logout"
+        icon="i-mdi-logout"
+        severity="danger"
+        @click="handleLogout"
+      />
+      <CoreButton
+        label="Change Password"
+        icon="i-mdi-lock-reset"
+        severity="warning"
+        @click="navigateTo('/auth/change-password')"
+      />
+    </div>
   </div>
 </template>
 
