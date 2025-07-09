@@ -19,7 +19,7 @@ async function onSubmit(values: LoginInput) {
 </script>
 
 <template>
-  <VeeForm :validation-schema="schema" class="space-y-4" @submit="onSubmit">
+  <VeeForm :validation-schema="schema" class="space-y-4 flex flex-col" @submit="onSubmit">
     <VeeField v-slot="{ field, errorMessage }" name="email">
       <CoreInputText v-bind="field" placeholder="Email" />
       <small class="text-red-500">{{ errorMessage }}</small>
@@ -29,8 +29,8 @@ async function onSubmit(values: LoginInput) {
       <small class="text-red-500">{{ errorMessage }}</small>
     </VeeField>
 
-    <CoreButton type="submit" :label="isPending ? 'Logging in...' : 'Login'" />
-
+    <!-- <CoreButton type="submit" :label="isPending ? 'Logging in...' : 'Login'" /> -->
+    <AtamButton type="submit" :label="isPending ? 'Logging in...' : 'Login'" severity="primary-blue" :hover="true"/>
     <small v-if="submitError" class="text-red-500 block">{{ submitError }}</small>
   </VeeForm>
 </template>

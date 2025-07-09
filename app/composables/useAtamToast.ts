@@ -14,7 +14,7 @@ interface ToastMessage {
 const toasts = ref<ToastMessage[]>([])
 let idCounter = 0
 
-export function useToast() {
+export function useAtamToast() {
   function showToast(message: string, type: ToastType = 'info', timeout = 3000) {
     const id = ++idCounter
     toasts.value.push({ id, message, type, timeout })

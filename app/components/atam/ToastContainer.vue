@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useToast } from '~/composables/useToast'
+import { useAtamToast } from '../../composables/useAtamToast'
 
-const { toasts } = useToast()
+const { toasts } = useAtamToast()
 </script>
 
 <template>

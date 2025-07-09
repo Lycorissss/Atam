@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useToast } from '~/composables/useToast'
+import { useAtamToast } from '../../composables/useAtamToast'
 
 const showDialog = ref(false)
 const copied = ref(false)
-const { showToast } = useToast()
+const { showToast } = useAtamToast()
 
 const rawCode = `<script setup lang="ts">
 import { ref } from 'vue'
-import AtamConfirmDialog from '~/components/atam/confirm-dialog.vue'
-import { useToast } from '~/composables/useToast'
+import { useAtamToast } from '../../composables/useAtamToast'
+
 
 const showDialog = ref(false)
-const { showToast } = useToast()
+const { showToast } = useAtamToast()
 
 function onDelete() {
   showToast('Item deleted!', 'success')
