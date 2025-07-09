@@ -39,105 +39,24 @@ const allRoutes = {
       url: '/admin/home',
       icon: 'i-mdi-home',
     },
-    { 
-      title: 'Voucher Request',
-      url: '/admin/voucher/all',
-      icon: 'i-mdi-history',
-      subfolderitems: [
-        {
-          page: 'All',
-          url: '/admin/voucher/all',
-          icon: 'i-mdi-format-list-bulleted',
-        },
-        {
-          page: 'In Progress',
-          url: '/admin/voucher/in-progress',
-          icon: 'i-mdi-progress-clock',
-        },
-        {
-          page: 'Approval',
-          url: '/admin/voucher/approval',
-          icon: 'i-mdi-check-circle-outline',
-        },
-        {
-          page: 'Payment',
-          url: '/admin/voucher/payment',
-          icon: 'i-mdi-credit-card-outline',
-        },
-        {
-          page: 'Validation',
-          url: '/admin/voucher/validation',
-          icon: 'i-mdi-clipboard-check-outline',
-        },
-        {
-          page: 'Received',
-          url: '/admin/voucher/received',
-          icon: 'i-mdi-inbox-arrow-down',
-        },
-        {
-          page: 'Completed',
-          url: '/admin/voucher/completed',
-          icon: 'i-mdi-check-all',
-        },
-        {
-          page: 'Canceled',
-          url: '/admin/voucher/canceled',
-          icon: 'i-mdi-cancel',
-        },
-        {
-          page: 'Receipt',
-          url: '/admin/voucher/receipt',
-          icon: 'i-mdi-receipt',
-        },
-      ],
-    },
     {
-      title: 'Master',
-      url: '/admin/master/registration',
-      icon: 'i-mdi-database',
-      subfolderitems: [
-        {
-          page: 'User Registration',
-          url: '/admin/master/registration',
-          icon: 'i-mdi-account-plus-outline',
-        },
-        {
-          page: 'Denom',
-          url: '/admin/master/denom',
-          icon: 'i-mdi-cash-multiple',
-          subfolderitems2: [
-            {
-              page: 'All Denoms',
-              url: '/admin/master/denom',
-              icon: 'i-mdi-format-list-bulleted',
-            },
-            {
-              page: 'Create Denom',
-              url: '/admin/master/denom/create',
-              icon: 'i-mdi-plus',
-            },
-          ],
-        },
-        {
-          page: 'Branch',
-          url: '/admin/master/branch',
-          icon: 'i-mdi-source-branch',
-        },
-        {
-          page: 'Announcement',
-          url: '/admin/master/announcement',
-          icon: 'i-mdi-bullhorn-outline',
-        },
-      ],
-    },
-    {
-      title: 'Report',
+      title: 'Documentation',
       url: '/admin/report/marketing',
-      icon: 'i-mdi-chart-bar',
+      icon: 'i-mdi-book',
       subfolderitems: [
         {
-          page: 'Marketing Report',
-          url: '/admin/report/marketing',
+          page: 'Button',
+          url: '/atam/button-doct',
+          icon: 'i-mdi-chart-line',
+        },
+        {
+          page: 'Card',
+          url: '/atam/card-doct',
+          icon: 'i-mdi-chart-line',
+        },
+        {
+          page: 'Dialog',
+          url: '/atam/confirm-dialog-doct',
           icon: 'i-mdi-chart-line',
         },
       ],
