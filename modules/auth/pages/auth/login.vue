@@ -11,5 +11,10 @@ definePageMeta({
       Login
     </h1>
     <AuthLoginForm />
+    <p class="text-center mt-4 text-sm text-gray-500">
+      <NuxtLink to="/auth/forgot-password" class="text-primary-600 hover:underline">
+        Lupa password?
+      </NuxtLink>
+    </p>
   </section>
 </template>
