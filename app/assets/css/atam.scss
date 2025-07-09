@@ -1,0 +1,64 @@
+:root {
+  --red-100: #FFEBEA;
+  --red-200: #FFB0AC;
+  --red-300: #FF766E;
+  --red-400: #FF3B30;
+  --red-500: #D6241A;
+  --red-600: #AD130A;
+  --red-700: #850700;
+  --red-800: #5C0500;
+
+  --yellow-100: #FFFBE5;
+  --yellow-200: #FFF2AC;
+  --yellow-300: #FFE973;
+  --yellow-400: #FFE039;
+  --yellow-500: #FFD700;
+  --yellow-600: #CCAC00;
+  --yellow-700: #998100;
+  --yellow-800: #665600;
+
+
+  --btn-shadow-base: #000 5px 5px;
+
+  --btn-primary-blue: #3b82f6;
+  --btn-primary-blue-hover: #2563eb;
+  --btn-primary-blue-text: #000;
+
+  --btn-primary-green: var(--yellow-400);
+  --btn-primary-green-hover: var(--yellow-400);
+  --btn-primary-green-text: #000000;
+
+  --btn-primary-red: var(--red-400);
+  --btn-primary-red-hover: var(--red-600);
+  --btn-primary-red-text: #000;
+}
+
+html.theme-dark {
+  @extend .dark;
+}
+
+.sahdow-atam {
+  box-shadow: var(--btn-shadow-base) !important;
+}
+
+.shadow-atam-on-hover:hover:enabled {
+  box-shadow: var(--btn-shadow-base) !important;
+}
+
+.btn-atam {
+  box-shadow: #000 5px 5px;
+  transition: all 0.2s ease;
+  border: 2px solid #000;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.dark {
+  .shadow-atam-on-hover:hover:enabled {
+    box-shadow: 4px 6px 0 0 #fff !important;
+  }
+  .sahdow-atam {
+  box-shadow: 4px 6px 0 0 #fff  !important;
+}
+}
+  

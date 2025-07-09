@@ -12,7 +12,7 @@ defineProps({
 })
 
 // Emits
-defineEmits(['toggle'])
+const emit = defineEmits(['toggle'])
 
 const { user } = useAuthState()
 
@@ -40,104 +40,23 @@ const allRoutes = {
       icon: 'i-mdi-home',
     },
     {
-      title: 'Voucher Request',
-      url: '/admin/voucher/all',
-      icon: 'i-mdi-history',
-      subfolderitems: [
-        {
-          page: 'All',
-          url: '/admin/voucher/all',
-          icon: 'i-mdi-format-list-bulleted',
-        },
-        {
-          page: 'In Progress',
-          url: '/admin/voucher/in-progress',
-          icon: 'i-mdi-progress-clock',
-        },
-        {
-          page: 'Approval',
-          url: '/admin/voucher/approval',
-          icon: 'i-mdi-check-circle-outline',
-        },
-        {
-          page: 'Payment',
-          url: '/admin/voucher/payment',
-          icon: 'i-mdi-credit-card-outline',
-        },
-        {
-          page: 'Validation',
-          url: '/admin/voucher/validation',
-          icon: 'i-mdi-clipboard-check-outline',
-        },
-        {
-          page: 'Received',
-          url: '/admin/voucher/received',
-          icon: 'i-mdi-inbox-arrow-down',
-        },
-        {
-          page: 'Completed',
-          url: '/admin/voucher/completed',
-          icon: 'i-mdi-check-all',
-        },
-        {
-          page: 'Canceled',
-          url: '/admin/voucher/canceled',
-          icon: 'i-mdi-cancel',
-        },
-        {
-          page: 'Receipt',
-          url: '/admin/voucher/receipt',
-          icon: 'i-mdi-receipt',
-        },
-      ],
-    },
-    {
-      title: 'Master',
-      url: '/admin/master/registration',
-      icon: 'i-mdi-database',
-      subfolderitems: [
-        {
-          page: 'User Registration',
-          url: '/admin/master/registration',
-          icon: 'i-mdi-account-plus-outline',
-        },
-        {
-          page: 'Denom',
-          url: '/admin/master/denom',
-          icon: 'i-mdi-cash-multiple',
-          subfolderitems2: [
-            {
-              page: 'All Denoms',
-              url: '/admin/master/denom',
-              icon: 'i-mdi-format-list-bulleted',
-            },
-            {
-              page: 'Create Denom',
-              url: '/admin/master/denom/create',
-              icon: 'i-mdi-plus',
-            },
-          ],
-        },
-        {
-          page: 'Branch',
-          url: '/admin/master/branch',
-          icon: 'i-mdi-source-branch',
-        },
-        {
-          page: 'Announcement',
-          url: '/admin/master/announcement',
-          icon: 'i-mdi-bullhorn-outline',
-        },
-      ],
-    },
-    {
-      title: 'Report',
+      title: 'Documentation',
       url: '/admin/report/marketing',
-      icon: 'i-mdi-chart-bar',
+      icon: 'i-mdi-book',
       subfolderitems: [
         {
-          page: 'Marketing Report',
-          url: '/admin/report/marketing',
+          page: 'Button',
+          url: '/atam/button-doct',
+          icon: 'i-mdi-chart-line',
+        },
+        {
+          page: 'Card',
+          url: '/atam/card-doct',
+          icon: 'i-mdi-chart-line',
+        },
+        {
+          page: 'Dialog',
+          url: '/atam/confirm-dialog-doct',
           icon: 'i-mdi-chart-line',
         },
       ],
@@ -198,7 +117,7 @@ function isNestedSubmenuActive(subItem: any) {
 function handleLinkClick() {
   // Close sidebar on mobile when link is clicked
   if (window.innerWidth < 1024) {
-    $emit('toggle')
+    emit('toggle')
   }
 }
 
@@ -236,41 +155,7 @@ onMounted(() => {
       <!-- Logo -->
       <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
         <div class="flex items-center space-x-2">
-          <div class="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
-            <svg class="w-16 h-16" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:#eab308;stop-opacity:1" />
-                </linearGradient>
-                <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.25" />
-                </filter>
-              </defs>
-
-              <!-- Background Circle -->
-              <circle cx="32" cy="32" r="28" fill="url(#logoGradient)" filter="url(#shadow)" />
-
-              <!-- Inner Circle -->
-              <circle cx="32" cy="32" r="24" fill="none" stroke="white" stroke-width="2" opacity="0.3" />
-
-              <!-- Logo Elements -->
-              <g fill="white">
-                <!-- Track/Path Symbol -->
-                <path d="M20 28 Q32 20 44 28 Q32 36 20 28" fill="white" opacity="0.9" />
-                <path d="M20 36 Q32 28 44 36 Q32 44 20 36" fill="white" opacity="0.7" />
-
-                <!-- Talent Star -->
-                <polygon points="32,16 34,22 40,22 35,26 37,32 32,28 27,32 29,26 24,22 30,22" fill="white" />
-
-                <!-- Connecting Lines -->
-                <line x1="16" y1="32" x2="20" y2="32" stroke="white" stroke-width="2" opacity="0.6" />
-                <line x1="44" y1="32" x2="48" y2="32" stroke="white" stroke-width="2" opacity="0.6" />
-              </g>
-            </svg>
-            <!-- <img src="https://storage.googleapis.com/gli-development.appspot.com/talent-track/logo.png" /> -->
-          </div>
-          <span class="text-xl font-bold text-gray-900 dark:text-white">A - Voucher</span>
+          <span class="text-xl font-bold text-gray-900 dark:text-white">A - Tams</span>
         </div>
         <Button
           v-if="isOpen"
