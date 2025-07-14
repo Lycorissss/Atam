@@ -6,10 +6,17 @@ definePageMeta({
 </script>
 
 <template>
-  <section class="py-12">
-    <h1 class="text-3xl font-semibold text-center mb-8">
-      Register
-    </h1>
-    <AuthRegisterForm />
+  <AtamBgSimetris class="fixed -z-10" />
+  <section class="py-12 z-10 register-atam">
+    <AtamCard>
+      <template #header>
+        <h1 class="text-3xl font-semibold text-center">
+          Register
+        </h1>
+      </template>
+      <template #content>
+        <AuthRegisterForm />
+      </template>
+    </AtamCard>
   </section>
 </template>

@@ -76,7 +76,7 @@ function handleConfirm() {
           <slot />
         </div>
 
-        <div class="flex justify-end gap-3 pt-3 text-sm">
+        <div class="flex  justify-end gap-3 pt-3 text-sm">
           <AtamButton
             @click="handleCancel"
             label="Cancel"

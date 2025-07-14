@@ -21,11 +21,13 @@ async function onSubmit(values: LoginInput) {
 <template>
   <VeeForm :validation-schema="schema" class="space-y-4 flex flex-col" @submit="onSubmit">
     <VeeField v-slot="{ field, errorMessage }" name="email">
-      <CoreInputText v-bind="field" placeholder="Email" />
+      <!-- <CoreInputText v-bind="field" placeholder="Email" /> -->
+      <AtamInput  v-bind="field" label="Email" placeholder="Email" />
       <small class="text-red-500">{{ errorMessage }}</small>
     </VeeField>
     <VeeField v-slot="{ field, errorMessage }" name="password">
-      <CoreInputText type="password" v-bind="field" placeholder="Password" />
+      <!-- <CoreInputText type="password" v-bind="field" placeholder="Password" /> -->
+      <AtamInput type="password" v-bind="field" placeholder="Password" />
       <small class="text-red-500">{{ errorMessage }}</small>
     </VeeField>
 
