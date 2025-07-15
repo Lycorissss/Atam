@@ -20,7 +20,8 @@ const configuratorOpen = ref(false)
 const isMobile = ref(false)
 
 // Methods
-function toggleSidebar(): void {
+function toggleSidebar() {
+  console.log('toggleSidebar called') // ← tambahkan sementara untuk debug
   sidebarOpen.value = !sidebarOpen.value
 }
 
@@ -62,16 +63,14 @@ onUnmounted(() => {
   >
     <div class="flex h-screen overflow-hidden">
       <DashboardSidebar
-        :is-open="sidebarOpen"
-        class="z-30"
-        @toggle="toggleSidebar"
+      :is-open="sidebarOpen" @toggle="toggleSidebar"
       />
 
       <div class="flex-1 flex flex-col overflow-hidden">
         <DashboardHeader
           @toggle-sidebar="toggleSidebar"
-          @toggle-configurator="toggleConfigurator"
-        />
+          />
+          <!-- @toggle-configurator="toggleConfigurator" -->
 
         <main class="flex-1 overflow-auto">
           <NuxtPage />

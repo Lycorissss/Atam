@@ -78,10 +78,12 @@ onMounted(() => {
   </section>
 
   <section v-else class="max-w-md z-10 mx-auto py-20">
-    <div class="text-center">
-      <h1 class="atam-heading">ATAM-LINK</h1>
-    </div>
     <AtamCard>
+      <template #header>
+        <div class="text-center">
+          <h1 class="atam-heading">ATAM-LINK</h1>
+        </div>
+      </template>
       <template #content>
         <div class="flex gap-atam-default">
           <div
