@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
   const accessToken = getCookie(event, 'access_token')
 
-//   console.log('Change Password Request:', getRequestHeaders(event), body)
+  //   console.log('Change Password Request:', getRequestHeaders(event), body)
 
   try {
     const res = await $fetch(`${config.atamsAuthUrl}/users/me/change-password`, {
@@ -16,8 +16,9 @@ export default defineEventHandler(async (event) => {
     })
 
     return res
-  } catch (err: any) {
-   console.error('Change Password Error:', err)
+  }
+  catch (err: any) {
+    console.error('Change Password Error:', err)
     throw createError({
       statusCode: err?.statusCode || 400,
       statusMessage: 'Change Password Failed',

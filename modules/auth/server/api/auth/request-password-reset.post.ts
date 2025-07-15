@@ -8,7 +8,8 @@ export default defineEventHandler(async (event) => {
       body,
     })
     return res
-  } catch (err: any) {
+  }
+  catch (err: any) {
     throw createError({
       statusCode: err?.statusCode || 400,
       message: err?.data?.message || 'Gagal request reset password',
