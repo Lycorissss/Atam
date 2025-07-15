@@ -7,6 +7,7 @@ console.log('Core layer loaded')
 export default defineNuxtConfig({
   extends: [
     'modules/auth',
+    'modules/business',
   ],
 
   future: {
@@ -81,27 +82,34 @@ export default defineNuxtConfig({
     },
   },
 
-  nitro: {
-    routeRules: {
-      '/_nuxt/**': {
-        headers: {
-          'cache-control': 'public, max-age=31536000, immutable',
-        },
-      },
-    },
-    output: {
-      dir: '.output',
-      serverDir: '.output/server',
-      publicDir: '.output/public',
-    },
-  },
-
   runtimeConfig: {
     atamsUrl: process.env.NUXT_ATAMS_API_URL,
     atamsAuthUrl: process.env.NUXT_ATAMS_AUTH_API_URL,
-    public: {
-      // Add any public config here if needed
-    },
+    // public: {
+    //   apiBase: '/api/core'
+    // },
+  },
+
+  nitro: {
+    // routeRules: {
+    //   '/_nuxt/**': {
+    //     headers: {
+    //       'cache-control': 'public, max-age=31536000, immutable',
+    //     },
+    //   },
+    // },
+    // output: {
+    //   dir: '.output',
+    //   serverDir: '.output/server',
+    //   publicDir: '.output/public',
+    // },
+    // devProxy: {
+    //   '/api/core': {
+    //     target: process.env.NUXT_ATAMS_API_URL, // ← langsung ke backend atams
+    //     changeOrigin: true,
+    //     prependPath: false,
+    //   },
+    // },
   },
 
   modules: [

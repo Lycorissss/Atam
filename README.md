@@ -72,4 +72,8 @@ yarn preview
 bun run preview
 ```
 
+# add modules
+npm create nuxt -- --template modules/business nuxt-layer
+```
+
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
