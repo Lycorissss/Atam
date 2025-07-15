@@ -50,13 +50,15 @@ async function resetPassword() {
     })
 
     navigateTo('/auth/login')
-  } catch (err: any) {
+  }
+  catch (err: any) {
     toast.add({
       type: 'error',
       title: 'Gagal',
       description: err?.data?.message || 'Reset password gagal',
     })
-  } finally {
+  }
+  finally {
     isPending.value = false
   }
 }

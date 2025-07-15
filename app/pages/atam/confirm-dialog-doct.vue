@@ -50,13 +50,15 @@ function onDelete() {
 
 <template>
   <div class="p-6 max-w-4xl mx-auto">
-    <h1 class="text-3xl font-bold text-center mb-8">🧾 ATAM ConfirmDialog Documentation</h1>
+    <h1 class="text-3xl font-bold text-center mb-8">
+      🧾 ATAM ConfirmDialog Documentation
+    </h1>
 
     <!-- Demo Area -->
     <div class="mb-8 space-y-4">
       <button
-        @click="showDialog = true"
         class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded"
+        @click="showDialog = true"
       >
         Delete Item
       </button>
@@ -84,7 +86,9 @@ function onDelete() {
 
     <!-- Explanation -->
     <div class="bg-white mt-8 p-4 rounded border text-sm space-y-3">
-      <h2 class="font-semibold text-lg mb-2">Penjelasan Properti:</h2>
+      <h2 class="font-semibold text-lg mb-2">
+        Penjelasan Properti:
+      </h2>
       <ul class="list-disc list-inside text-gray-700">
         <li><code>visible</code>: kontrol dialog tampil atau tidak (Boolean)</li>
         <li><code>title</code>: teks di atas dialog (opsional)</li>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted, nextTick, watch, defineAsyncComponent } from 'vue'
-import gsap from 'gsap'
 import type { AtamCard } from '#components'
+import gsap from 'gsap'
+import { defineAsyncComponent, nextTick, onMounted, ref, watch } from 'vue'
 
 definePageMeta({
   layout: 'auth',
@@ -33,7 +33,7 @@ watch(showLogin, async () => {
     gsap.fromTo(
       target,
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
+      { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
     )
   }
 })
@@ -81,14 +81,19 @@ onMounted(() => {
     <AtamCard>
       <template #header>
         <div class="text-center">
-          <h1 class="atam-heading">ATAM-LINK</h1>
+          <h1 class="atam-heading">
+            ATAM-LINK
+          </h1>
         </div>
       </template>
       <template #content>
         <div class="flex gap-atam-default">
           <div
-            class="w-1/2 bg-primary-400 text-black flex flex-col justify-center items-center p-12 border-r-[3px] border-black">
-            <h2 class="text-center font-extrabold mb-3">Hello, Welcome!</h2>
+            class="w-1/2 bg-primary-400 text-black flex flex-col justify-center items-center p-12 border-r-[3px] border-black"
+          >
+            <h2 class="text-center font-extrabold mb-3">
+              Hello, Welcome!
+            </h2>
             <p class=" text-base">
               {{ showLogin ? "Don't have an account?" : "Already have an account?" }}
             </p>
@@ -97,8 +102,10 @@ onMounted(() => {
                 Lupa password?
               </NuxtLink>
             </p>
-            <AtamButton :hover="true" severity="primary-green" class="px-6 py-2 font-bold"
-              @click="showLogin = !showLogin">
+            <AtamButton
+              :hover="true" severity="primary-green" class="px-6 py-2 font-bold"
+              @click="showLogin = !showLogin"
+            >
               {{ showLogin ? 'Register' : 'Login' }}
             </AtamButton>
           </div>

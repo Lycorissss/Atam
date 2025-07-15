@@ -14,7 +14,9 @@ function handleLogout() {
 
 <template>
   <div class="text-center py-20">
-    <h1 class="text-3xl font-semibold mb-8">Example Page</h1>
+    <h1 class="text-3xl font-semibold mb-8">
+      Example Page
+    </h1>
     <p class="mb-6">
       This is an example page to demonstrate the structure of a Vue component.
     </p>

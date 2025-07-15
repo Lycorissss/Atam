@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref } from 'vue'
 import { gsap } from 'gsap'
+import { nextTick, onMounted, ref } from 'vue'
 
 const rows = ref(12)
 const cols = ref(10)
@@ -16,11 +16,10 @@ onMounted(() => {
         amount: 1.5,
         grid: [rows.value, cols.value],
         from: 'center',
-      }
+      },
     })
   })
 })
-
 </script>
 
 <template>
@@ -29,7 +28,7 @@ onMounted(() => {
       class="grid w-full h-full"
       :style="{
         gridTemplateColumns: `repeat(${cols}, 1fr)`,
-        gridTemplateRows: `repeat(${rows}, 1fr)`
+        gridTemplateRows: `repeat(${rows}, 1fr)`,
       }"
     >
       <div

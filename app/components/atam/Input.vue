@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import type { InputHTMLAttributes } from 'vue'
 import type { InputTextPassThroughOptions } from 'primevue/inputtext'
 import { ref } from 'vue'
-import { ptViewMerge } from './utils'
 
 const props = defineProps<{
   modelValue: string
@@ -56,5 +54,5 @@ const theme = ref<InputTextPassThroughOptions>({
     }"
     @change="props.onChange"
     @blur="props.onBlur"
-  />
+  >
 </template>

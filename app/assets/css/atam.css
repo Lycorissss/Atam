@@ -7,6 +7,24 @@
   --red-600: #AD130A;
   --red-700: #850700;
   --red-800: #5C0500;
+  --orange-100: #f1dda7;
+  --orange-200: #ebcb82;
+  --orange-300: #e3b95c;
+  --orange-400: #daa73b;
+  --orange-500: #d19418;
+  --orange-600: #bb830f;
+  --orange-700: #a4730a;
+  --orange-800: #8c6206;
+  --orange-900: #735204;
+  --lilac-100: #e9d5ec;
+  --lilac-200: #dab9db;
+  --lilac-300: #c99eca;
+  --lilac-400: #b785b8;
+  --lilac-500: #a36ca4;
+  --lilac-600: #8c5d92;
+  --lilac-700: #7e588a;
+  --lilac-800: #6c4877;
+  --lilac-900: #5b3a64;
   --yellow-100: #FFFBE5;
   --yellow-200: #FFF2AC;
   --yellow-300: #FFE973;
@@ -15,6 +33,15 @@
   --yellow-600: #CCAC00;
   --yellow-700: #998100;
   --yellow-800: #665600;
+  --cyan-100: #a6f3f5;
+  --cyan-200: #7fe7eb;
+  --cyan-300: #57dbe2;
+  --cyan-400: #31cfd8;
+  --cyan-500: #1bbeca;
+  --cyan-600: #14a7b2;
+  --cyan-700: #0f909a;
+  --cyan-800: #0a7a84;
+  --cyan-900: #087f89;
   --btn-shadow-base: #000 5px 5px;
   --btn-primary-blue: #3b82f6;
   --btn-primary-blue-hover: #2563eb;
@@ -26,6 +53,7 @@
   --btn-primary-red-hover: var(--red-600);
   --btn-primary-red-text: #000;
   --heading-font-wight: 900;
+  --p-datepicker-header-background: #fff !important;
 }
 
 h1,

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-type ButtonVariant = {
+interface ButtonVariant {
   label: string
   propsObj: Record<string, boolean>
   rawCode: string
@@ -47,7 +47,7 @@ const buttons: ButtonVariant[] = [
 function fallbackCopyTextToClipboard(text: string, id: string) {
   const textArea = document.createElement('textarea')
   textArea.value = text
-  
+
   // Buat elemen tidak terlihat
   textArea.style.position = 'fixed'
   textArea.style.top = '0'
@@ -59,26 +59,27 @@ function fallbackCopyTextToClipboard(text: string, id: string) {
   textArea.style.outline = 'none'
   textArea.style.boxShadow = 'none'
   textArea.style.background = 'transparent'
-  
+
   document.body.appendChild(textArea)
   textArea.focus()
   textArea.select()
-  
+
   try {
     const successful = document.execCommand('copy')
     if (successful) {
       copiedIndex.value = id
       setTimeout(() => (copiedIndex.value = null), 1000)
-    } else {
+    }
+    else {
       console.error('Fallback copy gagal')
     }
-  } catch (err) {
+  }
+  catch (err) {
     console.error('Fallback copy error:', err)
   }
-  
+
   document.body.removeChild(textArea)
 }
-
 
 function copyToClipboard(code: string, id: string) {
   // Coba menggunakan modern clipboard API
@@ -93,7 +94,8 @@ function copyToClipboard(code: string, id: string) {
         // Fallback ke metode lama
         fallbackCopyTextToClipboard(code, id)
       })
-  } else {
+  }
+  else {
     // Fallback untuk browser yang tidak mendukung clipboard API
     fallbackCopyTextToClipboard(code, id)
   }
@@ -102,7 +104,9 @@ function copyToClipboard(code: string, id: string) {
 
 <template>
   <div class="p-6 max-w-7xl mx-auto">
-    <h1 class="text-3xl font-bold text-center mb-8">ATAM Button Documentation</h1>
+    <h1 class="text-3xl font-bold text-center mb-8">
+      ATAM Button Documentation
+    </h1>
 
     <div>
       <div v-for="variant in variants" :key="variant" class="mb-10 border-b pb-6">
@@ -140,7 +144,9 @@ function copyToClipboard(code: string, id: string) {
 
       <!-- Penjelasan -->
       <div class="p-4 bg-white border rounded-xl shadow-sm">
-        <h2 class="text-xl font-semibold mb-4">Penjelasan Properti</h2>
+        <h2 class="text-xl font-semibold mb-4">
+          Penjelasan Properti
+        </h2>
         <ul class="list-disc list-inside space-y-2 text-sm text-gray-700 dark:text-gray-100">
           <li><code>severity</code>: Warna/tema utama tombol (primary-blue, green, red).</li>
           <li><code>shadow</code>: Aktifkan efek bayangan pada tombol.</li>

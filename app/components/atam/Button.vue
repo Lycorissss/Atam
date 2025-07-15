@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ButtonPassThroughOptions, ButtonProps } from 'primevue/button'
 import Button from 'primevue/button'
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { ptViewMerge } from './utils'
 
 type SeverityType = 'primary-blue' | 'primary-green' | 'primary-red'
@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
   severity: 'primary-blue',
   hover: false,
   shadow: false,
-  outline: false
+  outline: false,
 })
 
 const theme = computed<ButtonPassThroughOptions>(() => {
@@ -43,16 +43,16 @@ function getSeverityClasses(severity: SeverityType, outline: boolean): string {
   const colorMap = {
     'primary-blue': {
       solid: 'bg-blue-600 text-black dark:text-white border-blue-600 focus-visible:outline-blue-600',
-      outline: 'font-bold bg-transparent text-blue-600 border-blue-600 border-1 focus-visible:outline-blue-600'
+      outline: 'font-bold bg-transparent text-blue-600 border-blue-600 border-1 focus-visible:outline-blue-600',
     },
     'primary-green': {
       solid: 'bg-green-600 text-black dark:text-white border-green-600 focus-visible:outline-green-600',
-      outline: 'font-bold bg-transparent text-green-600 border-green-600 border-1 focus-visible:outline-green-600'
+      outline: 'font-bold bg-transparent text-green-600 border-green-600 border-1 focus-visible:outline-green-600',
     },
     'primary-red': {
       solid: 'bg-red-600 text-black dark:text-white border-red-600 focus-visible:outline-red-600',
-      outline: 'font-bold bg-transparent text-red-600 border-red-600 border-1 focus-visible:outline-red-600'
-    }
+      outline: 'font-bold bg-transparent text-red-600 border-red-600 border-1 focus-visible:outline-red-600',
+    },
   }
 
   const variant = outline ? 'outline' : 'solid'
@@ -63,16 +63,16 @@ function getHoverClasses(severity: SeverityType, outline: boolean): string {
   const hoverMap = {
     'primary-blue': {
       solid: 'enabled:hover:bg-blue-700 enabled:active:bg-blue-800 enabled:hover:border-blue-700 enabled:active:border-blue-800 shadow-atam-on-hover',
-      outline: 'enabled:hover:bg-blue-50 enabled:active:bg-blue-100 enabled:hover:text-blue-700 enabled:active:text-blue-800 shadow-atam-on-hover '
+      outline: 'enabled:hover:bg-blue-50 enabled:active:bg-blue-100 enabled:hover:text-blue-700 enabled:active:text-blue-800 shadow-atam-on-hover ',
     },
     'primary-green': {
       solid: 'enabled:hover:bg-green-700 enabled:active:bg-green-800 enabled:hover:border-green-700 enabled:active:border-green-800 shadow-atam-on-hover',
-      outline: 'enabled:hover:bg-green-50 enabled:active:bg-green-100 enabled:hover:text-green-700 enabled:active:text-green-800 shadow-atam-on-hover'
+      outline: 'enabled:hover:bg-green-50 enabled:active:bg-green-100 enabled:hover:text-green-700 enabled:active:text-green-800 shadow-atam-on-hover',
     },
     'primary-red': {
       solid: 'enabled:hover:bg-red-700 enabled:active:bg-red-800 enabled:hover:border-red-700 enabled:active:border-red-800 shadow-atam-on-hover',
-      outline: 'enabled:hover:bg-red-50 enabled:active:bg-red-100 enabled:hover:text-red-700 enabled:active:text-red-800 shadow-atam-on-hover'
-    }
+      outline: 'enabled:hover:bg-red-50 enabled:active:bg-red-100 enabled:hover:text-red-700 enabled:active:text-red-800 shadow-atam-on-hover',
+    },
   }
 
   const variant = outline ? 'outline' : 'solid'
@@ -83,16 +83,18 @@ function getBadgeClasses(severity: SeverityType): string {
   const badgeMap = {
     'primary-blue': 'bg-blue-100 text-blue-600',
     'primary-green': 'bg-green-100 text-green-600',
-    'primary-red': 'bg-red-100 text-red-600'
+    'primary-red': 'bg-red-100 text-red-600',
   }
   return badgeMap[severity]
 }
 </script>
 
 <template>
-  <Button unstyled :pt="theme" :pt-options="{
-    mergeProps: ptViewMerge,
-  }">
+  <Button
+    unstyled :pt="theme" :pt-options="{
+      mergeProps: ptViewMerge,
+    }"
+  >
     <template v-for="(_, slotName) in $slots" #[slotName]="slotProps">
       <slot :name="slotName" v-bind="slotProps ?? {}" />
     </template>

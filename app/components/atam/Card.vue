@@ -1,9 +1,9 @@
 <!-- components/atam/card.vue -->
 <script setup lang="ts">
 import type { CardPassThroughOptions, CardProps } from 'primevue/card'
-import Card from 'primevue/card'
-import { ref, onMounted } from 'vue'
 import { gsap } from 'gsap'
+import Card from 'primevue/card'
+import { onMounted, ref } from 'vue'
 import { ptViewMerge } from './utils'
 
 interface Props extends /* @vue-ignore */ CardProps { }

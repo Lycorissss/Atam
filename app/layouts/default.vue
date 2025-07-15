@@ -63,14 +63,14 @@ onUnmounted(() => {
   >
     <div class="flex h-screen overflow-hidden">
       <DashboardSidebar
-      :is-open="sidebarOpen" @toggle="toggleSidebar"
+        :is-open="sidebarOpen" @toggle="toggleSidebar"
       />
 
       <div class="flex-1 flex flex-col overflow-hidden">
         <DashboardHeader
           @toggle-sidebar="toggleSidebar"
-          />
-          <!-- @toggle-configurator="toggleConfigurator" -->
+        />
+        <!-- @toggle-configurator="toggleConfigurator" -->
 
         <main class="flex-1 overflow-auto">
           <NuxtPage />

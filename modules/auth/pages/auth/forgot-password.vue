@@ -22,13 +22,15 @@ async function requestReset() {
       description: 'Cek email Anda untuk link reset password.',
     })
     email.value = ''
-  } catch (err: any) {
+  }
+  catch (err: any) {
     toast.add({
       type: 'error',
       title: 'Gagal',
       description: err?.data?.message || 'Gagal mengirim email reset',
     })
-  } finally {
+  }
+  finally {
     isPending.value = false
   }
 }
@@ -36,7 +38,9 @@ async function requestReset() {
 
 <template>
   <section class="max-w-md mx-auto py-20">
-    <h1 class="text-2xl font-bold text-center mb-6">Reset Password</h1>
+    <h1 class="text-2xl font-bold text-center mb-6">
+      Reset Password
+    </h1>
 
     <div class="space-y-4">
       <CoreInputText v-model="email" placeholder="Masukkan email Anda" />
@@ -44,8 +48,8 @@ async function requestReset() {
       <CoreButton
         :label="isPending ? 'Mengirim...' : 'Kirim Link Reset'"
         :disabled="!email"
-        @click="requestReset"
         class="w-full"
+        @click="requestReset"
       />
     </div>
   </section>

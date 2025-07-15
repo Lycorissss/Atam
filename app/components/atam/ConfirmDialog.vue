@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, watch, nextTick } from 'vue'
 import { gsap } from 'gsap'
+import { nextTick, ref, watch } from 'vue'
 
 const props = defineProps<{
   visible: boolean
@@ -17,7 +17,8 @@ const dialogRef = ref<HTMLDivElement | null>(null)
 const overlayRef = ref<HTMLDivElement | null>(null)
 
 watch(() => props.visible, (v) => {
-  if (v) openDialog()
+  if (v)
+    openDialog()
   else closeDialog()
 })
 
@@ -29,7 +30,7 @@ function openDialog() {
       scale: 1,
       opacity: 1,
       duration: 0.25,
-      ease: 'power2.out'
+      ease: 'power2.out',
     })
   })
 }
@@ -42,7 +43,7 @@ function closeDialog() {
     ease: 'power2.in',
     onComplete: () => {
       show.value = false
-    }
+    },
   })
   gsap.to(overlayRef.value, { opacity: 0, duration: 0.2 })
 }
@@ -65,7 +66,7 @@ function handleConfirm() {
     >
       <div
         ref="dialogRef"
-        class="w-full max-w-xs sm:max-w-sm rounded-2xl bg-lime-100 dark:bg-lime-300 text-black dark:text-white 
+        class="w-full max-w-xs sm:max-w-sm rounded-2xl bg-lime-100 dark:bg-lime-300 text-black dark:text-white
                border border-black/10 shadow-[0_4px_0_0_rgba(0,0,0,0.6)] px-4 py-5 space-y-3"
       >
         <h2 v-if="title" class="text-base font-bold">
@@ -78,15 +79,15 @@ function handleConfirm() {
 
         <div class="flex  justify-end gap-3 pt-3 text-sm">
           <AtamButton
-            @click="handleCancel"
             label="Cancel"
             severity="primary-blue"
             :outline="true"
+            @click="handleCancel"
           />
           <AtamButton
-            @click="handleConfirm"
             label="Confirm"
             severity="primary-green"
+            @click="handleConfirm"
           />
         </div>
       </div>

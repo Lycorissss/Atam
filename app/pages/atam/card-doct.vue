@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+
 const copied = ref<string | null>(null)
 
 const basicCode = `<AtamCard>
@@ -37,7 +38,9 @@ function copy(codeId: string, code: string) {
 
 <template>
   <div class="p-6 max-w-4xl mx-auto">
-    <h1 class="text-3xl font-bold text-center mb-8">ATAM Card Documentation</h1>
+    <h1 class="text-3xl font-bold text-center mb-8">
+      ATAM Card Documentation
+    </h1>
 
     <!-- Basic Card Example -->
     <div class="space-y-6">
@@ -64,7 +67,9 @@ function copy(codeId: string, code: string) {
     <div class="space-y-6 mt-8">
       <AtamCard>
         <template #header>
-          <div class="text-xl font-bold">🚀 Epoch 9 Report</div>
+          <div class="text-xl font-bold">
+            🚀 Epoch 9 Report
+          </div>
         </template>
         <template #content>
           <p>
@@ -74,7 +79,9 @@ function copy(codeId: string, code: string) {
         <template #footer>
           <div class="flex justify-between text-sm text-gray-600">
             <span>Last synced: 2 mins ago</span>
-            <AtamButton severity="primary-green" :hover="true">Button</AtamButton>
+            <AtamButton severity="primary-green" :hover="true">
+              Button
+            </AtamButton>
           </div>
         </template>
       </AtamCard>

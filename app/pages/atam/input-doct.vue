@@ -63,11 +63,15 @@ const code = {
 
 <template>
   <div class="p-6 max-w-4xl mx-auto space-y-12">
-    <h1 class="text-3xl font-bold text-center mb-8">ATAM Input Components Documentation</h1>
+    <h1 class="text-3xl font-bold text-center mb-8">
+      ATAM Input Components Documentation
+    </h1>
 
     <!-- AtamInput -->
     <section class="space-y-3">
-      <h2 class="text-xl font-semibold">AtamInput</h2>
+      <h2 class="text-xl font-semibold">
+        AtamInput
+      </h2>
       <AtamInput
         v-model="name"
         label="Nama Lengkap"
@@ -88,7 +92,9 @@ const code = {
 
     <!-- AtamSelect -->
     <section class="space-y-3">
-      <h2 class="text-xl font-semibold">AtamSelect</h2>
+      <h2 class="text-xl font-semibold">
+        AtamSelect
+      </h2>
       <AtamSelect
         v-model="gender"
         :options="options"
@@ -110,7 +116,9 @@ const code = {
 
     <!-- AtamDate -->
     <section class="space-y-3">
-      <h2 class="text-xl font-semibold">AtamDate</h2>
+      <h2 class="text-xl font-semibold">
+        AtamDate
+      </h2>
       <AtamDate v-model="birthdate" label="Tanggal Lahir" hint="Format: yyyy-mm-dd" />
       <div class="relative bg-gray-100 p-4 rounded-md font-mono text-sm">
         <button
@@ -125,7 +133,9 @@ const code = {
 
     <!-- AtamTextarea -->
     <section class="space-y-3">
-      <h2 class="text-xl font-semibold">AtamTextarea</h2>
+      <h2 class="text-xl font-semibold">
+        AtamTextarea
+      </h2>
       <AtamTextarea
         v-model="description"
         label="Tentang Anda"
@@ -145,7 +155,9 @@ const code = {
 
     <!-- AtamCheckbox -->
     <section class="space-y-3">
-      <h2 class="text-xl font-semibold">AtamCheckbox</h2>
+      <h2 class="text-xl font-semibold">
+        AtamCheckbox
+      </h2>
       <AtamCheckbox v-model="agreed" label="Saya menyetujui syarat dan ketentuan" />
       <div class="relative bg-gray-100 p-4 rounded-md font-mono text-sm">
         <button

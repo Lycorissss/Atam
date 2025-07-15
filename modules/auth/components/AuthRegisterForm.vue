@@ -41,7 +41,7 @@ async function onSubmit(values: RegisterInput) {
           </VeeField>
         </div>
       </div>
-          <div class="flex gap-4">
+      <div class="flex gap-4">
         <div class="">
           <VeeField v-slot="{ field, errorMessage }" name="metadata.first_name">
             <AtamInput v-bind="field" placeholder="First Name" />

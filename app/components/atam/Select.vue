@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
 import { gsap } from 'gsap'
+import { onMounted, ref, watch } from 'vue'
 import FieldWrapper from './FieldWrapper.vue'
 
 const props = defineProps<{
   modelValue: string | number
-  options: { label: string; value: string | number }[]
+  options: { label: string, value: string | number }[]
   label?: string
   placeholder?: string
   error?: string
@@ -27,7 +27,8 @@ function handleChange(event: Event) {
 
 onMounted(() => {
   const el = selectRef.value
-  if (!el) return
+  if (!el)
+    return
 
   el.addEventListener('mousedown', () => {
     isOpen.value = true
@@ -63,7 +64,9 @@ watch(isOpen, (val) => {
         :value="modelValue"
         @change="handleChange"
       >
-        <option disabled value="">{{ placeholder || 'Pilih salah satu' }}</option>
+        <option disabled value="">
+          {{ placeholder || 'Pilih salah satu' }}
+        </option>
         <option v-for="opt in options" :key="opt.value" :value="opt.value">
           {{ opt.label }}
         </option>

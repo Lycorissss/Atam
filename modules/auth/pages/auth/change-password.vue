@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { z } from 'zod'
 import { toTypedSchema } from '@vee-validate/zod'
+import { z } from 'zod'
 import { useChangePassword } from '~/composables/useChangePassword'
 
 definePageMeta({
@@ -34,7 +34,8 @@ async function onSubmit(values: any) {
     })
     submitError.value = ''
     navigateTo('/example/test')
-  } catch (err: any) {
+  }
+  catch (err: any) {
     const msg = err?.data?.message || 'Gagal ganti password'
     toast.add({
       type: 'error',
@@ -48,20 +49,22 @@ async function onSubmit(values: any) {
 
 <template>
   <div class="max-w-md mx-auto py-12">
-    <h2 class="text-xl font-semibold mb-4 text-center">Ganti Password</h2>
+    <h2 class="text-xl font-semibold mb-4 text-center">
+      Ganti Password
+    </h2>
 
-    <VeeForm :validation-schema="formSchema" @submit="onSubmit" class="space-y-4">
-      <VeeField name="current_password" v-slot="{ field, errorMessage }">
+    <VeeForm :validation-schema="formSchema" class="space-y-4" @submit="onSubmit">
+      <VeeField v-slot="{ field, errorMessage }" name="current_password">
         <CoreInputText v-bind="field" type="password" placeholder="Password Lama" />
         <small class="text-red-500">{{ errorMessage }}</small>
       </VeeField>
 
-      <VeeField name="new_password" v-slot="{ field, errorMessage }">
+      <VeeField v-slot="{ field, errorMessage }" name="new_password">
         <CoreInputText v-bind="field" type="password" placeholder="Password Baru" />
         <small class="text-red-500">{{ errorMessage }}</small>
       </VeeField>
 
-      <VeeField name="confirm_new_password" v-slot="{ field, errorMessage }">
+      <VeeField v-slot="{ field, errorMessage }" name="confirm_new_password">
         <CoreInputText v-bind="field" type="password" placeholder="Konfirmasi Password Baru" />
         <small class="text-red-500">{{ errorMessage }}</small>
       </VeeField>
