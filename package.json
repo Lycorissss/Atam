@@ -11,8 +11,9 @@
     "start": "node server.mjs",
     "preview:node": "pnpm build && pnpm start",
     "postinstall": "nuxt prepare",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix"
+    "lint": "eslint . --ext .ts,.js,.vue",
+    "lint:fix": "eslint . --ext .ts,.js,.vue --fix",
+    "create-module": "tsx scripts/create-module.ts"
   },
   "dependencies": {
     "@nuxt/image": "^1.10.0",
@@ -53,6 +54,7 @@
     "@unocss/preset-icons": "^66.2.1",
     "eslint": "^9.30.1",
     "sass-embedded": "^1.89.0",
+    "tsx": "^4.20.3",
     "unocss": "^66.2.1"
   }
 }
