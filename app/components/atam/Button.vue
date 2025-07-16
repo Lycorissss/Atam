@@ -42,15 +42,15 @@ const theme = computed<ButtonPassThroughOptions>(() => {
 function getSeverityClasses(severity: SeverityType, outline: boolean): string {
   const colorMap = {
     'primary-blue': {
-      solid: 'bg-blue-600 text-black dark:text-white border-blue-600 focus-visible:outline-blue-600',
+      solid: 'bg-blue-400 text-black dark:text-white border-blue-600 focus-visible:outline-blue-600',
       outline: 'font-bold bg-transparent text-blue-600 border-blue-600 border-1 focus-visible:outline-blue-600',
     },
     'primary-green': {
-      solid: 'bg-green-600 text-black dark:text-white border-green-600 focus-visible:outline-green-600',
+      solid: 'bg-green-400 text-black dark:text-white border-green-600 focus-visible:outline-green-600',
       outline: 'font-bold bg-transparent text-green-600 border-green-600 border-1 focus-visible:outline-green-600',
     },
     'primary-red': {
-      solid: 'bg-red-600 text-black dark:text-white border-red-600 focus-visible:outline-red-600',
+      solid: 'bg-red-400 text-black dark:text-white border-red-600 focus-visible:outline-red-600',
       outline: 'font-bold bg-transparent text-red-600 border-red-600 border-1 focus-visible:outline-red-600',
     },
   }

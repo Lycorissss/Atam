@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import AuthLoginForm from '../../components/AuthLoginForm.vue'
-import AuthRegisterForm from '../../components/AuthRegisterForm.vue'
 import type { AtamCard } from '#components'
 import gsap from 'gsap'
 import {
   computed,
-  defineAsyncComponent,
   nextTick,
   onMounted,
   onUnmounted,
   ref,
   watch,
 } from 'vue'
+import AuthLoginForm from '../../components/AuthLoginForm.vue'
+import AuthRegisterForm from '../../components/AuthRegisterForm.vue'
 
 definePageMeta({
   layout: 'auth',
@@ -30,8 +29,6 @@ const isAnimating = ref(false)
 function handleResize() {
   isMobile.value = window.innerWidth < 768
 }
-
-
 
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
@@ -105,9 +102,8 @@ onMounted(() => {
   window.addEventListener('resize', handleResize)
 
   if (welcomePanel.value && formPanel.value) {
-    gsap.set([welcomePanel.value, formPanel.value], { x: 0 });
+    gsap.set([welcomePanel.value, formPanel.value], { x: 0 })
   }
-
 })
 </script>
 
@@ -146,9 +142,11 @@ onMounted(() => {
 
       <template #content>
         <div ref="panelsContainer" class="flex overflow-hidden relative" style="height: auto; will-change: transform">
-          <div ref="welcomePanel"
+          <div
+            ref="welcomePanel"
             class="w-1/2 bg-primary-400 text-black flex flex-col items-center justify-center p-12 relative z-10"
-            :class="panelClasses" style="will-change: transform">
+            :class="panelClasses" style="will-change: transform"
+          >
             <div class="text-center">
               <h2 class="text-2xl font-extrabold mb-3 transition-all duration-300">
                 Hello, Welcome!
@@ -158,21 +156,27 @@ onMounted(() => {
                   ? "Don't have an account?"
                   : "Already have an account?" }}
                 <br>
-                <NuxtLink to="/auth/forgot-password"
-                  class="text-sm text-gray-500 hover:underline transition-colors duration-200">
+                <NuxtLink
+                  to="/auth/forgot-password"
+                  class="text-sm text-gray-500 hover:underline transition-colors duration-200"
+                >
                   Lupa password?
                 </NuxtLink>
               </p>
             </div>
-            <AtamButton :hover="true" severity="primary-green"
+            <AtamButton
+              :hover="true" severity="primary-green"
               class="px-6 py-2 font-bold mb-4 transition-transform duration-200 hover:scale-105" :disabled="isAnimating"
-              @click="showLogin = !showLogin">
+              @click="showLogin = !showLogin"
+            >
               {{ showLogin ? 'Register' : 'Login' }}
             </AtamButton>
           </div>
 
-          <div ref="formPanel" class="w-1/2 flex items-center justify-center p-8 bg-white relative z-10"
-            :class="panelClasses" style="will-change: transform">
+          <div
+            ref="formPanel" class="w-1/2 flex items-center justify-center p-8 bg-white relative z-10"
+            :class="panelClasses" style="will-change: transform"
+          >
             <div class="w-full max-w-sm transition-all duration-300">
               <AuthLoginForm v-show="showLogin" />
               <AuthRegisterForm v-show="!showLogin" />
