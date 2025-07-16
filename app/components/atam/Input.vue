@@ -23,11 +23,11 @@ const emit = defineEmits<{
 
 const theme = ref<InputTextPassThroughOptions>({
   root: `
-    appearance-none rounded-full outline-hidden
+    appearance-none rounded-sm outline-hidden
     bg-white dark:bg-black
     text-black dark:text-white
     placeholder:text-gray-500 dark:placeholder:text-gray-400
-    border-2 border-black dark:border-white
+    border-3 border-black dark:border-white
     px-3 py-2
     font-semibold
     shadow-[5px_5px_0_0_#000] dark:shadow-[5px_5px_0_0_#fff]

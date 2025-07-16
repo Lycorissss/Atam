@@ -1,5 +1,5 @@
-import { mkdirSync, writeFileSync, existsSync } from 'fs'
-import { join } from 'path'
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
+import { join } from 'node:path'
 
 const moduleName = process.argv[2]
 
@@ -9,7 +9,7 @@ if (!moduleName) {
 }
 
 const pascalCase = moduleName.charAt(0).toUpperCase() + moduleName.slice(1)
-const pluralPath = moduleName.endsWith('s') ? moduleName : moduleName + 's'
+const pluralPath = moduleName.endsWith('s') ? moduleName : `${moduleName}s`
 
 const root = (p: string) => join(process.cwd(), p)
 
@@ -27,15 +27,13 @@ function createFile(path: string, content: string) {
 }
 
 // 1. nuxt.config.ts
-createFile(`modules/${moduleName}/nuxt.config.ts`, 
-`export default defineNuxtConfig({
+createFile(`modules/${moduleName}/nuxt.config.ts`, `export default defineNuxtConfig({
   extends: [],
 })
 `)
 
 // 2. constants/<moduleName>Keys.ts
-createFile(`modules/${moduleName}/constants/${moduleName}Keys.ts`, 
-`export const ${moduleName}Keys = {
+createFile(`modules/${moduleName}/constants/${moduleName}Keys.ts`, `export const ${moduleName}Keys = {
   all: () => ['${moduleName}'],
   lists: () => ['${moduleName}', 'list'],
   list: () => ['${moduleName}', 'list'],
@@ -45,8 +43,7 @@ createFile(`modules/${moduleName}/constants/${moduleName}Keys.ts`,
 `)
 
 // 3. api/use<ModuleName>Api.ts
-createFile(`modules/${moduleName}/api/use${pascalCase}Api.ts`,
-`import { useAtamFetch } from '~/composables/useAtamFetch'
+createFile(`modules/${moduleName}/api/use${pascalCase}Api.ts`, `import { useAtamFetch } from '~/composables/useAtamFetch'
 
 export function use${pascalCase}Api() {
   return {
@@ -61,11 +58,11 @@ export function use${pascalCase}Api() {
 
 // 4. composables
 const composables = [
-  ['use' + pascalCase + 'List.ts', `${moduleName}Keys.list()`, 'query'],
-  ['use' + pascalCase + 'Detail.ts', `${moduleName}Keys.detail(id)`, 'query'],
-  ['useCreate' + pascalCase + '.ts', '', 'mutation'],
-  ['useUpdate' + pascalCase + '.ts', '', 'mutationUpdate'],
-  ['useDelete' + pascalCase + '.ts', '', 'mutationDelete'],
+  [`use${pascalCase}List.ts`, `${moduleName}Keys.list()`, 'query'],
+  [`use${pascalCase}Detail.ts`, `${moduleName}Keys.detail(id)`, 'query'],
+  [`useCreate${pascalCase}.ts`, '', 'mutation'],
+  [`useUpdate${pascalCase}.ts`, '', 'mutationUpdate'],
+  [`useDelete${pascalCase}.ts`, '', 'mutationDelete'],
 ]
 
 composables.forEach(([file, key, type]) => {
@@ -85,7 +82,8 @@ export function ${file.replace('.ts', '')}() {
   })
 }
 `
-  } else if (type === 'mutation') {
+  }
+  else if (type === 'mutation') {
     content = `import { useMutation, useQueryClient } from '@tanstack/vue-query'
 import { useRouter } from 'vue-router'
 import { use${pascalCase}Api } from '../api/use${pascalCase}Api'
@@ -105,7 +103,8 @@ export function ${file.replace('.ts', '')}() {
   })
 }
 `
-  } else if (type === 'mutationUpdate') {
+  }
+  else if (type === 'mutationUpdate') {
     content = `import { useMutation, useQueryClient } from '@tanstack/vue-query'
 import { useRouter } from 'vue-router'
 import { use${pascalCase}Api } from '../api/use${pascalCase}Api'
@@ -126,7 +125,8 @@ export function ${file.replace('.ts', '')}(id: number) {
   })
 }
 `
-  } else if (type === 'mutationDelete') {
+  }
+  else if (type === 'mutationDelete') {
     content = `import { useMutation, useQueryClient } from '@tanstack/vue-query'
 import { use${pascalCase}Api } from '../api/use${pascalCase}Api'
 import { ${moduleName}Keys } from '../constants/${moduleName}Keys'
@@ -166,8 +166,7 @@ routes.forEach(([file, method, useId]) => {
   const path = useId ? `\${id}` : ''
   const payload = method === 'POST' || method === 'PUT' ? ',\n    body' : ''
 
-  createFile(`${apiPath}/${file}`,
-`export default defineEventHandler(async (event) => {
+  createFile(`${apiPath}/${file}`, `export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
   ${idLine}${body}
   return await $fetch(\`\${config.atamsUrl}/${pluralPath}${useId ? '/\${id}' : ''}\`, {

@@ -15,53 +15,76 @@ const theme = ref({
     root: `flex-auto w-full appearance-none outline-none
       p-has-dropdown:rounded-e-none p-has-e-icon:pe-10
       bg-white text-black placeholder:text-neutral-500
-      border-2 border-black rounded-md
-      enabled:hover:bg-neutral-100 enabled:focus:bg-neutral-200
+      dark:bg-black dark:text-white dark:placeholder:text-neutral-400
+      border-2 border-black dark:border-white
+      rounded-md
+      enabled:hover:bg-[var(--lilac-300)] enabled:focus:bg-[var(--lilac-300)]
+      dark:enabled:hover:bg-[var(--lilac-900)] dark:enabled:focus:bg-neutral-800
       disabled:bg-neutral-200 disabled:text-neutral-500
+      dark:disabled:bg-neutral-800 dark:disabled:text-neutral-500
       font-bold px-3 py-2
       p-invalid:border-red-600 p-invalid:placeholder:text-red-600
-      transition-none shadow-[5px_5px_0_#000]`,
+      dark:p-invalid:border-red-400 dark:p-invalid:placeholder:text-red-400
+      transition-none shadow-[5px_5px_0_#000] dark:shadow-[5px_5px_0_#fff]`,
   },
 
   dropdown: `cursor-pointer flex items-center justify-center select-none
-  w-9 h-9 rounded-md border-2 border-black
-  bg-neutral-200 hover:bg-neutral-300 active:bg-neutral-400
-  text-black font-bold
-  transition-none shadow-[5px_5px_0_#000]`,
+    w-9 h-9 rounded-md border-2 border-black
+    dark:border-white
+    bg-neutral-200 hover:bg-neutral-300 active:bg-neutral-400
+    dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:active:bg-neutral-600
+    text-black dark:text-white font-bold
+    transition-none shadow-[5px_5px_0_#000] dark:shadow-[5px_5px_0_#fff]`,
 
-  inputIconContainer: `absolute top-1/2 end-3 -mt-2 text-neutral-500`,
+  inputIconContainer: `absolute top-1/2 end-3 -mt-2 text-neutral-500 dark:text-neutral-400`,
 
-  panel: `w-auto p-3 rounded-md border-2 border-black
-      bg-white text-black font-bold
-      shadow-[5px_5px_0_#000]`,
+  panel: `w-auto p-3 rounded-md border-2 border-black dark:border-white
+    bg-[var(--lilac-300)] dark:bg-[var(--lilac-900)]
+    text-black dark:text-white font-bold
+    shadow-[5px_5px_0_#000] dark:shadow-[5px_5px_0_#fff]`,
 
-  header: `flex items-center justify-between pb-2 font-bold border-b-2 border-black`,
+  header: `flex items-center  justify-between pb-2 font-bold border-b-2 border-black dark:border-white`,
 
   title: `flex items-center justify-between gap-2 font-bold`,
 
-  selectMonth: `bg-white text-black border-2 border-black rounded-md font-bold px-2 py-1
-      hover:bg-neutral-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-black`,
+  selectMonth: `bg-[var(--cyan-300)] text-black border-2 border-black
+    dark:bg-[var(--cyan-900)] dark:text-white dark:border-white
+    rounded-md font-bold px-2 py-1
+    hover:bg-neutral-100 dark:hover:bg-neutral-900
+    focus-visible:outline focus-visible:outline-2 focus-visible:outline-black dark:focus-visible:outline-white`,
 
-  selectYear: `bg-white text-black border-2 border-black rounded-md font-bold px-2 py-1
-      hover:bg-neutral-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-black`,
+  selectYear: `bg-[var(--cyan-300)] text-black border-2 border-black
+    dark:bg-black dark:bg-[var(--cyan-900)] dark:border-white
+    rounded-md font-bold px-2 py-1
+    hover:bg-neutral-100 dark:hover:bg-neutral-900
+    focus-visible:outline focus-visible:outline-2 focus-visible:outline-black dark:focus-visible:outline-white`,
 
-  dayView: `w-[100%]`,
+  dayView: `w-full`,
   tableHeader: `w-full`,
   tableBody: `w-full`,
 
-  day: `w-10 h-10 text-black font-bold rounded-md border-2 border-transparent
-  hover:bg-neutral-200 flex items-center justify-center
-  p-selected:bg-black p-selected:text-white
-  p-today:border-black p-today:bg-lilac-300
-  p-disabled:opacity-50 p-disabled:pointer-events-none`,
+  day: `w-10 h-10 text-black dark:text-white font-bold rounded-md border-2 border-transparent
+    hover:bg-neutral-200 dark:hover:bg-neutral-800
+    flex items-center justify-center
+    p-selected:bg-black p-selected:text-white
+    dark:p-selected:bg-white dark:p-selected:text-black
+    p-today:border-black p-today:bg-[var(--cyan-300)]
+    dark:p-today:border-white dark:p-today:bg-[var(--cyan-900)]
+    p-disabled:opacity-50 p-disabled:pointer-events-none`,
 
   month: `w-1/3 inline-flex justify-center cursor-pointer p-1 border-2 border-transparent font-bold
-      hover:bg-neutral-100 p-selected:bg-black p-selected:text-white`,
+    text-black dark:text-white
+    hover:bg-neutral-100 dark:hover:bg-neutral-800
+    p-selected:bg-[var(--cyan-500)] p-selected:text-white
+    dark:p-selected:bg-[var(--cyan-900)] dark:p-selected:text-black`,
 
   year: `w-1/2 inline-flex justify-center cursor-pointer p-1 border-2 border-transparent font-bold
-      hover:bg-neutral-100 p-selected:bg-black p-selected:text-white`,
+    text-black dark:text-white
+    hover:bg-neutral-100 dark:hover:bg-neutral-800
+    p-selected:bg-black p-selected:text-white
+    dark:p-selected:bg-white dark:p-selected:text-black`,
 
-  timePicker: `flex items-center justify-center border-t-2 border-black p-2 gap-2`,
+  timePicker: `flex items-center justify-center border-t-2 border-black dark:border-white p-2 gap-2`,
 
   hour: `font-bold`,
   minute: `font-bold`,
@@ -70,7 +93,7 @@ const theme = ref({
 
   calendarContainer: `w-full`,
 
-  buttonbar: `flex justify-between items-center pt-2 border-t-2 border-black`,
+  buttonbar: `flex justify-between items-center pt-2 border-t-2 border-black dark:border-white`,
 
   transition: {
     enterFromClass: 'opacity-0 scale-y-75',

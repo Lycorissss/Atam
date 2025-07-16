@@ -60,35 +60,28 @@ function handleConfirm() {
 <template>
   <teleport to="body">
     <div
-      v-if="show"
-      ref="overlayRef"
-      class="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm"
+      v-if="show" ref="overlayRef"
+      class="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-[1px]"
     >
       <div
-        ref="dialogRef"
-        class="w-full max-w-xs sm:max-w-sm rounded-2xl bg-lime-100 dark:bg-lime-300 text-black dark:text-white
-               border border-black/10 shadow-[0_4px_0_0_rgba(0,0,0,0.6)] px-4 py-5 space-y-3"
+        ref="dialogRef" class="w-full max-w-xs sm:max-w-sm
+               rounded-md bg-white dark:bg-black
+               border-[3px] border-black
+               shadow-[8px_8px_0_#000]
+               text-black dark:text-white px-5 py-6 space-y-4
+               transition-all duration-300"
       >
-        <h2 v-if="title" class="text-base font-bold">
+        <h2 v-if="title" class="text-base font-extrabold uppercase tracking-wide">
           {{ title }}
         </h2>
 
-        <div class="text-sm text-black/80 dark:text-white">
+        <div class="text-sm text-black dark:text-white">
           <slot />
         </div>
 
-        <div class="flex  justify-end gap-3 pt-3 text-sm">
-          <AtamButton
-            label="Cancel"
-            severity="primary-blue"
-            :outline="true"
-            @click="handleCancel"
-          />
-          <AtamButton
-            label="Confirm"
-            severity="primary-green"
-            @click="handleConfirm"
-          />
+        <div class="flex justify-end gap-3 pt-4 text-sm">
+          <AtamButton label="Cancel" severity="primary-red" :hover="true" @click="handleCancel" />
+          <AtamButton label="Confirm" :hover="true" severity="primary-green" @click="handleConfirm" />
         </div>
       </div>
     </div>

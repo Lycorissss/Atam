@@ -80,16 +80,14 @@ onUnmounted(() => {
   <header class="py-4 px-6">
     <div class="flex items-center justify-between">
       <div class="flex items-center space-x-4">
-        <Button icon="i-mdi-menu" class="p-button-sm p-button-text lg:hidden" @click="$emit('toggle-sidebar')" />
-
-        <CoreBreadcrumb :model="breadcrumbItems" class="hidden sm:block">
+        <AtamBreadcrumb :model="breadcrumbItems" class="hidden sm:block">
           <template #item="{ item }">
             <NuxtLink v-if="item.to" :to="item.to" class="text-primary-500 hover:underline">
               {{ item.label }}
             </NuxtLink>
             <span v-else class="text-gray-500">{{ item.label }}</span>
           </template>
-        </CoreBreadcrumb>
+        </AtamBreadcrumb>
       </div>
 
       <div class="flex items-center gap-3">

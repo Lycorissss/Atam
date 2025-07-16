@@ -18,7 +18,7 @@ export const useThemeStore = defineStore('theme', () => {
   // --- Actions ---
   const setTheme = (theme: 'light' | 'dark') => {
     currentTheme.value = theme
-    
+
     if (import.meta.client) {
       document.documentElement.classList.remove('theme-light', 'theme-dark', 'p-light', 'p-dark')
       document.documentElement.classList.add(`theme-${theme}`, `p-${theme}`)
@@ -32,7 +32,7 @@ export const useThemeStore = defineStore('theme', () => {
 
   const setPrimaryColor = (color: string) => {
     currentPrimaryColor.value = color
-    
+
     if (import.meta.client) {
       document.documentElement.className = document.documentElement.className
         .replace(/color-\w+/g, '')
@@ -44,7 +44,7 @@ export const useThemeStore = defineStore('theme', () => {
   const toggleHighContrast = (value?: boolean) => {
     const newValue = typeof value === 'boolean' ? value : !highContrastMode.value
     highContrastMode.value = newValue
-    
+
     if (import.meta.client) {
       document.documentElement.classList.toggle('high-contrast', newValue)
       localStorage.setItem('highContrastMode', String(newValue))
@@ -55,7 +55,7 @@ export const useThemeStore = defineStore('theme', () => {
   const toggleSidebarOpen = (value?: boolean) => {
     const newValue = typeof value === 'boolean' ? value : !sidebarOpenMode.value
     sidebarOpenMode.value = newValue
-    
+
     if (import.meta.client) {
       // Removed incorrect high-contrast class toggle
       localStorage.setItem('sidebarOpenMode', String(newValue))
@@ -68,7 +68,8 @@ export const useThemeStore = defineStore('theme', () => {
       const savedTheme = localStorage.getItem('theme') as 'light' | 'dark'
       if (savedTheme && ['light', 'dark'].includes(savedTheme)) {
         currentTheme.value = savedTheme
-      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      }
+      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         currentTheme.value = 'dark'
       }
       document.documentElement.classList.add(`theme-${currentTheme.value}`, `p-${currentTheme.value}`)
