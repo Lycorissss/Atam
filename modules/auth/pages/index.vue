@@ -3,13 +3,14 @@ import type { AtamCard } from '#components'
 import gsap from 'gsap'
 import {
   computed,
-  defineAsyncComponent,
   nextTick,
   onMounted,
   onUnmounted,
   ref,
   watch,
 } from 'vue'
+import AuthLoginForm from '../components/AuthLoginForm.vue'
+import AuthRegisterForm from '../components/AuthRegisterForm.vue'
 
 definePageMeta({
   layout: 'auth',
@@ -24,19 +25,10 @@ const panelsContainer = ref<HTMLElement | null>(null)
 const welcomePanel = ref<HTMLElement | null>(null)
 const formPanel = ref<HTMLElement | null>(null)
 const isAnimating = ref(false)
-
-const AuthLoginForm = defineAsyncComponent(() => import('../components/AuthLoginForm.vue'))
-const AuthRegisterForm = defineAsyncComponent(() => import('../components/AuthRegisterForm.vue'))
-
 // Responsive handler
 function handleResize() {
   isMobile.value = window.innerWidth < 768
 }
-
-onMounted(() => {
-  handleResize()
-  window.addEventListener('resize', handleResize)
-})
 
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
@@ -46,16 +38,15 @@ watch(showLogin, async (login) => {
   if (isAnimating.value || !panelsContainer.value || !welcomePanel.value || !formPanel.value)
     return
 
-  await nextTick()
   isAnimating.value = true
+
+  await nextTick()
 
   const containerWidth = panelsContainer.value.clientWidth
   const slideDistance = containerWidth / 2
 
-  // Create smooth position swap animation
   const tl = gsap.timeline({
     onComplete: () => {
-      // Reorder DOM elements after animation
       const parent = panelsContainer.value!
       if (login) {
         parent.appendChild(welcomePanel.value!)
@@ -66,7 +57,6 @@ watch(showLogin, async (login) => {
         parent.appendChild(welcomePanel.value!)
       }
 
-      // Reset positions
       gsap.set([welcomePanel.value, formPanel.value], {
         x: 0,
         clearProps: 'transform',
@@ -76,9 +66,7 @@ watch(showLogin, async (login) => {
     },
   })
 
-  // Animate both panels to swap positions
   if (login) {
-    // Welcome panel moves to left, Form panel moves to right
     tl.to(welcomePanel.value, {
       x: -slideDistance,
       duration: 0.4,
@@ -105,16 +93,23 @@ watch(showLogin, async (login) => {
   }
 })
 
-// Computed class for smooth transitions
 const panelClasses = computed(() => ({
   'transition-all duration-300 ease-in-out': !isAnimating.value,
 }))
+
+onMounted(() => {
+  handleResize()
+  window.addEventListener('resize', handleResize)
+
+  if (welcomePanel.value && formPanel.value) {
+    gsap.set([welcomePanel.value, formPanel.value], { x: 0 })
+  }
+})
 </script>
 
 <template>
   <AtamBgSimetris class="fixed -z-10" />
 
-  <!-- MOBILE: tampil seperti biasa -->
   <section v-if="isMobile" class="max-w-md mx-auto py-20 z-10">
     <AtamCard>
       <template #header>
@@ -137,7 +132,6 @@ const panelClasses = computed(() => ({
     </AtamCard>
   </section>
 
-  <!-- DESKTOP: dua panel berdampingan -->
   <section v-else class="max-w-4xl mx-auto py-20 z-10">
     <AtamCard ref="formRef">
       <template #header>
@@ -147,16 +141,11 @@ const panelClasses = computed(() => ({
       </template>
 
       <template #content>
-        <div
-          ref="panelsContainer"
-          class="flex rounded-2xl overflow-hidden relative"
-          style="height: auto; will-change: transform"
-        >
+        <div ref="panelsContainer" class="flex overflow-hidden relative" style="height: auto; will-change: transform">
           <div
             ref="welcomePanel"
             class="w-1/2 bg-primary-400 text-black flex flex-col items-center justify-center p-12 relative z-10"
-            :class="panelClasses"
-            style="will-change: transform"
+            :class="panelClasses" style="will-change: transform"
           >
             <div class="text-center">
               <h2 class="text-2xl font-extrabold mb-3 transition-all duration-300">
@@ -166,33 +155,31 @@ const panelClasses = computed(() => ({
                 {{ showLogin
                   ? "Don't have an account?"
                   : "Already have an account?" }}
+                <br>
+                <NuxtLink
+                  to="/auth/forgot-password"
+                  class="text-sm text-gray-500 hover:underline transition-colors duration-200"
+                >
+                  Lupa password?
+                </NuxtLink>
               </p>
-              <AtamButton
-                :hover="true"
-                severity="primary-green"
-                class="px-6 py-2 font-bold mb-4 transition-transform duration-200 hover:scale-105"
-                :disabled="isAnimating"
-                @click="showLogin = !showLogin"
-              >
-                {{ showLogin ? 'Register' : 'Login' }}
-              </AtamButton>
-              <NuxtLink
-                to="/auth/forgot-password"
-                class="text-sm text-gray-500 hover:underline transition-colors duration-200"
-              >
-                Lupa password?
-              </NuxtLink>
             </div>
+            <AtamButton
+              :hover="true" severity="primary-green"
+              class="px-6 py-2 font-bold mb-4 transition-transform duration-200 hover:scale-105" :disabled="isAnimating"
+              @click="showLogin = !showLogin"
+            >
+              {{ showLogin ? 'Register' : 'Login' }}
+            </AtamButton>
           </div>
 
           <div
-            ref="formPanel"
-            class="w-1/2 flex items-center justify-center p-8 bg-white relative z-10"
-            :class="panelClasses"
-            style="will-change: transform"
+            ref="formPanel" class="w-1/2 flex items-center justify-center p-8 bg-white relative z-10"
+            :class="panelClasses" style="will-change: transform"
           >
             <div class="w-full max-w-sm transition-all duration-300">
-              <component :is="showLogin ? AuthLoginForm : AuthRegisterForm" />
+              <AuthLoginForm v-show="showLogin" />
+              <AuthRegisterForm v-show="!showLogin" />
             </div>
           </div>
         </div>
@@ -200,14 +187,3 @@ const panelClasses = computed(() => ({
     </AtamCard>
   </section>
 </template>
-
-<style scoped>
-.transition-all {
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-}
-
-[style*="will-change"] {
-  transform: translateZ(0);
-}
-</style>
