@@ -133,7 +133,7 @@ onMounted(() => {
   </section>
 
   <section v-else class="max-w-4xl mx-auto py-20 z-10">
-    <AtamCard ref="formRef">
+    <AtamCard ref="formRef" :outline="true" severity="primary">
       <template #header>
         <h1 class="atam-heading text-center">
           ATAM-LINK
@@ -174,7 +174,7 @@ onMounted(() => {
           </div>
 
           <div
-            ref="formPanel" class="w-1/2 flex items-center justify-center p-8 bg-white relative z-10"
+            ref="formPanel" class="w-1/2 flex items-center justify-center p-8 relative z-10"
             :class="panelClasses" style="will-change: transform"
           >
             <div class="w-full max-w-sm transition-all duration-300">
