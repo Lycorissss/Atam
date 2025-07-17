@@ -19,12 +19,11 @@ const openSubmenus = ref<string[]>([])
 const userRole = ref<'ADMIN' | 'MARKETING' | 'USER'>('MARKETING')
 
 const allRoutes = {
-  ADMIN: [{ title: 'Home', url: '/admin/home', icon: 'i-mdi-home' }],
+  ADMIN: [{ title: 'Home', url: '/atam', icon: 'i-mdi-home' }],
   MARKETING: [
-    { title: 'Home', url: '/admin/home', icon: 'i-mdi-home' },
+    { title: 'Home', url: '/atam', icon: 'i-mdi-home' },
     {
       title: 'Documentation',
-      url: '/admin/report/marketing',
       icon: 'i-mdi-book',
       subfolderitems: [
         { page: 'Button', url: '/atam/button-doct', icon: 'i-mdi-gesture-tap' },
@@ -34,7 +33,7 @@ const allRoutes = {
       ],
     },
   ],
-  USER: [{ title: 'Home', url: '/admin/home', icon: 'i-mdi-home' }],
+  USER: [{ title: 'Home', url: '/atam', icon: 'i-mdi-home' }],
 }
 
 const userRoutes = computed(() => allRoutes[userRole.value] || [])

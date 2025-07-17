@@ -10,6 +10,7 @@ const gender = ref('')
 const birthdate = ref('')
 const description = ref('')
 const agreed = ref(false)
+const isChecked = ref<boolean>(false)
 
 // Options untuk select
 const genderOptions = [
@@ -49,7 +50,8 @@ const numberCode = `<AtamInput
   placeholder="Masukkan umur"
 />`
 
-const selectCode = `<AtamSelect 
+const selectCode = `
+<AtamSelect 
         v-model="gender"
         :options="genderOptions"
         optionLabel="label" 
@@ -76,6 +78,15 @@ const checkboxCode = `<AtamCheckbox
   v-model="agreed"
   label="Saya menyetujui syarat dan ketentuan"
 />`
+const swicthCode = `<AtamToggleSwitch
+  v-model="isChecked" 
+  :true-value="1" 
+  :false-value="0" 
+  input-id="darkMode" 
+  name="darkMode"
+  hint="Toggle untuk dark mode" 
+  required>
+</AtamToggleSwitch>`
 
 // Copy helper
 const copied = ref<string | null>(null)
@@ -98,12 +109,15 @@ function copy(id: string, text: string) {
       <h2 class="text-2xl font-semibold">
         Text Input
       </h2>
-      <AtamInput v-model="name" label="Nama Lengkap" placeholder="Masukkan nama anda" hint="Gunakan nama asli"
-        required />
+      <AtamInput
+        v-model="name" label="Nama Lengkap" placeholder="Masukkan nama anda" hint="Gunakan nama asli"
+        required
+      />
       <div class="relative bg-gray-100 dark:bg-gray-800 p-4 rounded-md font-mono text-sm">
         <button
           class="absolute top-2 right-2 text-xs bg-white dark:bg-black border px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
-          @click="copy('input', inputCode)">
+          @click="copy('input', inputCode)"
+        >
           {{ copied === 'input' ? 'Copied!' : 'Copy' }}
         </button>
         <pre class="overflow-x-auto"><code class="text-gray-800 dark:text-gray-100">{{ inputCode }}</code></pre>
@@ -119,7 +133,8 @@ function copy(id: string, text: string) {
       <div class="relative bg-gray-100 dark:bg-gray-800 p-4 rounded-md font-mono text-sm">
         <button
           class="absolute top-2 right-2 text-xs bg-white dark:bg-black border px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
-          @click="copy('email', emailCode)">
+          @click="copy('email', emailCode)"
+        >
           {{ copied === 'email' ? 'Copied!' : 'Copy' }}
         </button>
         <pre class="overflow-x-auto"><code class="text-gray-800 dark:text-gray-100">{{ emailCode }}</code></pre>
@@ -135,7 +150,8 @@ function copy(id: string, text: string) {
       <div class="relative bg-gray-100 dark:bg-gray-800 p-4 rounded-md font-mono text-sm">
         <button
           class="absolute top-2 right-2 text-xs bg-white dark:bg-black border px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
-          @click="copy('password', passwordCode)">
+          @click="copy('password', passwordCode)"
+        >
           {{ copied === 'password' ? 'Copied!' : 'Copy' }}
         </button>
         <pre class="overflow-x-auto"><code class="text-gray-800 dark:text-gray-100">{{ passwordCode }}</code></pre>
@@ -151,7 +167,8 @@ function copy(id: string, text: string) {
       <div class="relative bg-gray-100 dark:bg-gray-800 p-4 rounded-md font-mono text-sm">
         <button
           class="absolute top-2 right-2 text-xs bg-white dark:bg-black border px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
-          @click="copy('number', numberCode)">
+          @click="copy('number', numberCode)"
+        >
           {{ copied === 'number' ? 'Copied!' : 'Copy' }}
         </button>
         <pre class="overflow-x-auto"><code class="text-gray-800 dark:text-gray-100">{{ numberCode }}</code></pre>
@@ -163,12 +180,22 @@ function copy(id: string, text: string) {
       <h2 class="text-2xl font-semibold">
         Select Input
       </h2>
-      <AtamSelect v-model="gender" :options="genderOptions" optionLabel="label" optionValue="value"
-        placeholder="Pilih jenis kelamin" unstyled label="Jenis Kelamin" hint="Wajib diisi" required />
+      <p>
+        in script : <br>
+        const genderOptions = [ <br>
+        { label: 'Laki-laki', value: 'male' }, <br>
+        { label: 'Perempuan', value: 'female' }, <br>
+        ]
+      </p>
+      <AtamSelect
+        v-model="gender" :options="genderOptions" option-label="label" option-value="value"
+        placeholder="Pilih jenis kelamin" unstyled label="Jenis Kelamin" hint="Wajib diisi" required
+      />
       <div class="relative bg-gray-100 dark:bg-gray-800 p-4 rounded-md font-mono text-sm">
         <button
           class="absolute top-2 right-2 text-xs bg-white dark:bg-black border px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
-          @click="copy('select', selectCode)">
+          @click="copy('select', selectCode)"
+        >
           {{ copied === 'select' ? 'Copied!' : 'Copy' }}
         </button>
         <pre class="overflow-x-auto"><code class="text-gray-800 dark:text-gray-100">{{ selectCode }}</code></pre>
@@ -184,7 +211,8 @@ function copy(id: string, text: string) {
       <div class="relative bg-gray-100 dark:bg-gray-800 p-4 rounded-md font-mono text-sm">
         <button
           class="absolute top-2 right-2 text-xs bg-white dark:bg-black border px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
-          @click="copy('date', dateCode)">
+          @click="copy('date', dateCode)"
+        >
           {{ copied === 'date' ? 'Copied!' : 'Copy' }}
         </button>
         <pre class="overflow-x-auto"><code class="text-gray-800 dark:text-gray-100">{{ dateCode }}</code></pre>
@@ -196,12 +224,15 @@ function copy(id: string, text: string) {
       <h2 class="text-2xl font-semibold">
         Textarea Input
       </h2>
-      <AtamTextarea v-model="description" label="Tentang Anda" placeholder="Ceritakan sedikit tentang dirimu"
-        hint="Opsional" />
+      <AtamTextarea
+        v-model="description" label="Tentang Anda" placeholder="Ceritakan sedikit tentang dirimu"
+        hint="Opsional"
+      />
       <div class="relative bg-gray-100 dark:bg-gray-800 p-4 rounded-md font-mono text-sm">
         <button
           class="absolute top-2 right-2 text-xs bg-white dark:bg-black border px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
-          @click="copy('textarea', textareaCode)">
+          @click="copy('textarea', textareaCode)"
+        >
           {{ copied === 'textarea' ? 'Copied!' : 'Copy' }}
         </button>
         <pre class="overflow-x-auto"><code class="text-gray-800 dark:text-gray-100">{{ textareaCode }}</code></pre>
@@ -217,11 +248,33 @@ function copy(id: string, text: string) {
       <div class="relative bg-gray-100 dark:bg-gray-800 p-4 rounded-md font-mono text-sm">
         <button
           class="absolute top-2 right-2 text-xs bg-white dark:bg-black border px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
-          @click="copy('checkbox', checkboxCode)">
+          @click="copy('checkbox', checkboxCode)"
+        >
           {{ copied === 'checkbox' ? 'Copied!' : 'Copy' }}
         </button>
         <pre class="overflow-x-auto"><code class="text-gray-800 dark:text-gray-100">{{ checkboxCode }}</code></pre>
       </div>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-2xl font-semibold">
+        Toggle Swich
+      </h2>
+
+      <AtamToggleSwitch
+        v-model="isChecked" :true-value="1" :false-value="0" input-id="darkMode" name="darkMode"
+        hint="Toggle untuk dark mode" required
+      />
+      <div class="relative bg-gray-100 dark:bg-gray-800 p-4 rounded-md font-mono text-sm">
+        <button
+          class="absolute top-2 right-2 text-xs bg-white dark:bg-black border px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
+          @click="copy('swicth', swicthCode)"
+        >
+          {{ copied === 'swicth' ? 'Copied!' : 'Copy' }}
+        </button>
+        <pre class="overflow-x-auto"><code class="text-gray-800 dark:text-gray-100">{{ swicthCode }}</code></pre>
+      </div>
+      <label for="darkMode" class="ml-2">Dark Mode: {{ isChecked }}</label>
     </section>
   </div>
 </template>

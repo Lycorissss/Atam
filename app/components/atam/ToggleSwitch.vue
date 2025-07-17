@@ -8,18 +8,17 @@ interface Props extends /* @vue-ignore */ ToggleSwitchProps {}
 defineProps<Props>()
 
 const theme = ref<ToggleSwitchPassThroughOptions>({
-  root: `inline-block w-10 h-6`,
+  root: `inline-block w-10 h-6 `,
   input: `peer cursor-pointer disabled:cursor-default appearance-none absolute top-0 start-0 w-full h-full m-0 p-0 opacity-0 z-10 rounded-[30px]`,
-  slider: `inline-block w-full h-full rounded-[30px] shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]
+  slider: `inline-block w-full border-[3px] dark:border-white border-black h-full rounded-[30px] shadow-[3px_3px_0_rgba(0,0,0)] dark:shadow-[3px_3px_0_rgba(255,255,255)]
         bg-surface-300 dark:bg-surface-700
-        border border-transparent
         transition-colors duration-200
         peer-enabled:peer-hover:bg-surface-400 dark:peer-enabled:peer-hover:bg-surface-600
         p-checked:bg-primary peer-enabled:peer-hover:p-checked:bg-primary-emphasis
         p-invalid:border-red-400 dark:p-invalid:border-red-300
         p-disabled:bg-surface-200 dark:p-disabled:bg-surface-600
         peer-focus-visible:outline peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary`,
-  handle: `absolute top-1/2 flex justify-center items-center
+  handle: `absolute top-1/2 flex justify-center dark:border-white  items-center  border-[3px] border-black
         bg-surface-0 dark:bg-surface-400
         text-surface-500 dark:text-surface-900
         w-4 h-4 start-1 -mt-2 rounded-full

@@ -8,25 +8,36 @@ interface Props extends /* @vue-ignore */ ToggleSwitchProps {}
 defineProps<Props>()
 
 const theme = ref<ToggleSwitchPassThroughOptions>({
-  root: `inline-block w-10 h-6`,
-  input: `peer cursor-pointer disabled:cursor-default appearance-none absolute top-0 start-0 w-full h-full m-0 p-0 opacity-0 z-10 rounded-[30px]`,
-  slider: `inline-block w-full h-full rounded-[30px] shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]
-        bg-surface-300 dark:bg-surface-700
-        border border-transparent
-        transition-colors duration-200
-        peer-enabled:peer-hover:bg-surface-400 dark:peer-enabled:peer-hover:bg-surface-600
-        p-checked:bg-primary peer-enabled:peer-hover:p-checked:bg-primary-emphasis
-        p-invalid:border-red-400 dark:p-invalid:border-red-300
-        p-disabled:bg-surface-200 dark:p-disabled:bg-surface-600
-        peer-focus-visible:outline peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary`,
-  handle: `absolute top-1/2 flex justify-center items-center
-        bg-surface-0 dark:bg-surface-400
-        text-surface-500 dark:text-surface-900
-        w-4 h-4 start-1 -mt-2 rounded-full
-        transition-[background,color,left] duration-200
-        p-checked:bg-surface-0 dark:p-checked:bg-surface-900 p-checked:text-primary p-checked:start-5
-        p-disabled:bg-surface-700 dark:p-disabled:bg-surface-900
-}`,
+  root: `
+    inline-block w-10 h-6
+    border-4 border-black
+    bg-neutral-200
+    shadow-[5px_5px_0_#000]
+  `,
+  input: `
+    peer absolute inset-0 w-full h-full
+    opacity-0 z-10 cursor-pointer
+  `,
+  slider: `
+    block w-full h-full
+    bg-neutral-100
+    border-4 border-black
+    rounded-none
+    shadow-[3px_3px_0_#000]
+    transition-colors duration-200
+    peer-checked:bg-neutral-100
+  `,
+  handle: `
+    absolute top-1/2 start-1
+    w-4 h-4
+    bg-black
+    border-4 border-black
+    rounded-none
+    shadow-[2px_2px_0_#000]
+    transform -translate-y-1/2
+    transition-all duration-200
+    peer-checked:start-[calc(100%-1rem)]
+  `,
 })
 </script>
 

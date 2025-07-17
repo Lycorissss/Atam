@@ -19,8 +19,8 @@ const severityOptions = ref(
   rawSeverity.map(opt => ({
     label: // kapitalisasi kata pertama (Primary, Blue, …)
       opt.charAt(0).toUpperCase() + opt.slice(1),
-    value: opt
-  }))
+    value: opt,
+  })),
 )
 
 const examples = {
@@ -150,8 +150,10 @@ function copyToClipboard(code: string, id: string) {
       </AtamCard>
 
       <div class="mt-4 relative bg-gray-100 rounded-lg p-3 text-sm font-mono">
-        <button class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
-          @click="copyToClipboard(examples.basic, 'basic')">
+        <button
+          class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
+          @click="copyToClipboard(examples.basic, 'basic')"
+        >
           {{ copied === 'basic' ? 'Copied!' : 'Copy' }}
         </button>
         <code>{{ examples.basic }}</code>
@@ -173,8 +175,10 @@ function copyToClipboard(code: string, id: string) {
       </AtamCard>
 
       <div class="mt-4 relative bg-gray-100 rounded-lg p-3 text-sm font-mono">
-        <button class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
-          @click="copyToClipboard(examples.outline, 'outline')">
+        <button
+          class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
+          @click="copyToClipboard(examples.outline, 'outline')"
+        >
           {{ copied === 'outline' ? 'Copied!' : 'Copy' }}
         </button>
         <code>{{ examples.outline }}</code>
@@ -196,8 +200,10 @@ function copyToClipboard(code: string, id: string) {
       </AtamCard>
 
       <div class="mt-4 relative bg-gray-100 rounded-lg p-3 text-sm font-mono">
-        <button class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
-          @click="copyToClipboard(examples.shadow, 'shadow')">
+        <button
+          class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
+          @click="copyToClipboard(examples.shadow, 'shadow')"
+        >
           {{ copied === 'shadow' ? 'Copied!' : 'Copy' }}
         </button>
         <code>{{ examples.shadow }}</code>
@@ -219,8 +225,10 @@ function copyToClipboard(code: string, id: string) {
       </AtamCard>
 
       <div class="mt-4 relative bg-gray-100 rounded-lg p-3 text-sm font-mono">
-        <button class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
-          @click="copyToClipboard(examples.hover, 'hover')">
+        <button
+          class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
+          @click="copyToClipboard(examples.hover, 'hover')"
+        >
           {{ copied === 'hover' ? 'Copied!' : 'Copy' }}
         </button>
         <code>{{ examples.hover }}</code>
@@ -240,8 +248,10 @@ function copyToClipboard(code: string, id: string) {
       <!-- Dropdown untuk pilih severity -->
       <div class="mb-4">
         <label class="block text-sm font-medium text-gray-700 mb-2">Pilih Severity:</label>
-        <AtamSelect v-model="selectedSeverity" :options="severityOptions" optionLabel="label" optionValue="value"
-          placeholder="Pilih severity" unstyled label="Severity" hint="Wajib diisi" required />
+        <AtamSelect
+          v-model="selectedSeverity" :options="severityOptions" option-label="label" option-value="value"
+          placeholder="Pilih severity" unstyled label="Severity" hint="Wajib diisi" required
+        />
       </div>
 
       <AtamCard :severity="selectedSeverity">
@@ -251,8 +261,10 @@ function copyToClipboard(code: string, id: string) {
       </AtamCard>
 
       <div class="mt-4 relative bg-gray-100 rounded-lg p-3 text-sm font-mono">
-        <button class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
-          @click="copyToClipboard(getSeverityExample(selectedSeverity), 'severity')">
+        <button
+          class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
+          @click="copyToClipboard(getSeverityExample(selectedSeverity), 'severity')"
+        >
           {{ copied === 'severity' ? 'Copied!' : 'Copy' }}
         </button>
         <code>{{ getSeverityExample(selectedSeverity) }}</code>
@@ -285,8 +297,10 @@ function copyToClipboard(code: string, id: string) {
       </AtamCard>
 
       <div class="mt-4 relative bg-gray-100 rounded-lg p-3 text-sm font-mono">
-        <button class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
-          @click="copyToClipboard(examples.full, 'full')">
+        <button
+          class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
+          @click="copyToClipboard(examples.full, 'full')"
+        >
           {{ copied === 'full' ? 'Copied!' : 'Copy' }}
         </button>
         <code>{{ examples.full }}</code>
@@ -299,7 +313,8 @@ function copyToClipboard(code: string, id: string) {
         Penjelasan Properti
       </h2>
       <ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
-        <li><code>severity</code>: Warna/tema background card. Opsi tersedia: <code>primary-blue</code>,
+        <li>
+          <code>severity</code>: Warna/tema background card. Opsi tersedia: <code>primary-blue</code>,
           <code>primary-green</code>, <code>primary-red</code>, <code>blue</code>, <code>green</code>, <code>red</code>,
           <code>yellow</code>, <code>purple</code>, <code>orange</code>, <code>gray</code>.
         </li>
