@@ -82,7 +82,7 @@ onUnmounted(() => {
       <div class="flex items-center space-x-4">
         <AtamBreadcrumb :model="breadcrumbItems" class="hidden sm:block">
           <template #item="{ item }">
-            <NuxtLink v-if="item.to" :to="item.to" class="text-primary-500 hover:underline">
+            <NuxtLink v-if="item.to" :to="item.to" class="text-orange-500 hover:underline">
               {{ item.label }}
             </NuxtLink>
             <span v-else class="text-gray-500">{{ item.label }}</span>

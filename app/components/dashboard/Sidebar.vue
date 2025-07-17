@@ -97,8 +97,8 @@ onMounted(() => {
       <template v-for="item in userRoutes" :key="item.title">
         <NuxtLink
           v-if="!item.subfolderitems" :to="item.url"
-          class="flex items-center gap-3 px-4 py-2 rounded-[10px] border-[3px] border-black transition-all font-semibold mb-2 shadow-[4px_4px_0_#000]"
-          :class="route.path === item.url ? 'bg-purple-400 text-black' : 'bg-white dark:bg-black hover:bg-lilac-100 dark:hover:bg-lilac-900 text-black dark:text-white'"
+          class="flex items-center gap-3 px-4 py-2 rounded-[4px] border-[3px] border-black transition-all font-semibold mb-2 shadow-[4px_4px_0_#000]"
+          :class="route.path === item.url ? 'bg-orange-400 text-black' : 'bg-white dark:bg-black hover:bg-lilac-100 dark:hover:bg-lilac-900 text-black dark:text-white'"
           @click="handleLinkClick"
         >
           <i :class="item.icon" />
@@ -107,7 +107,7 @@ onMounted(() => {
 
         <div v-else>
           <button
-            class="w-full flex justify-between items-center px-4 py-2 mb-2 rounded-[10px] border-[3px] border-black bg-white dark:bg-black text-black dark:text-white font-semibold shadow-[4px_4px_0_#000] hover:bg-lilac-100 dark:hover:bg-lilac-800"
+            class="w-full flex justify-between items-center px-4 py-2 mb-2 rounded-[4px] border-[3px] border-black bg-white dark:bg-black text-black dark:text-white font-semibold shadow-[4px_4px_0_#000] hover:bg-lilac-100 dark:hover:bg-lilac-800"
             @click="toggleSubmenu(item.title)"
           >
             <div class="flex items-center gap-3">
@@ -124,8 +124,8 @@ onMounted(() => {
             <div v-if="openSubmenus.includes(item.title)" class="pl-8 space-y-1 text-sm">
               <NuxtLink
                 v-for="sub in item.subfolderitems" :key="sub.page" :to="sub.url"
-                class="flex items-center gap-3 px-3 py-2 rounded-[8px] border-[2px] border-black shadow-[3px_3px_0_#000] hover:bg-purple-100 dark:hover:bg-purple-900 transition-all"
-                :class="route.path === sub.url ? 'bg-purple-300 text-black' : 'bg-white dark:bg-black text-black dark:text-white'"
+                class="flex items-center gap-3 px-3 py-2 rounded-[3px] border-[2px] border-black shadow-[3px_3px_0_#000] hover:bg-orange-100 dark:hover:bg-orange-900 transition-all"
+                :class="route.path === sub.url ? 'bg-orange-300 text-black' : 'bg-white dark:bg-black text-black dark:text-white'"
                 @click="handleLinkClick"
               >
                 <i :class="sub.icon" />

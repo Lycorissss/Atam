@@ -30,6 +30,7 @@ function getSeverityClasses(severity: string): string {
   // Fallback untuk nama warna sederhana
   const colorMap: Record<string, string> = {
     'primary': 'bg-[var(--lilac-200)]',
+    'cyan': 'bg-[var(--cyan-200)]',
     'primary-green': 'bg-green-300',
     'primary-red': 'bg-red-300',
     'blue': 'bg-blue-300',

@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const theme = computed<ButtonPassThroughOptions>(() => {
-  const baseClasses = `!border-black dark:!border-white !border-2 px-5 py-2 rounded-full inline-flex cursor-pointer select-none items-center justify-center overflow-hidden relative disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200`
+  const baseClasses = `!border-black dark:!border-white !border-2 px-5 py-2 rounded-md inline-flex cursor-pointer select-none items-center justify-center overflow-hidden relative disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200`
 
   const severityClasses = getSeverityClasses(props.severity, props.outline)
   const hoverClasses = props.hover ? getHoverClasses(props.severity, props.outline) : ''
@@ -62,16 +62,16 @@ function getSeverityClasses(severity: SeverityType, outline: boolean): string {
 function getHoverClasses(severity: SeverityType, outline: boolean): string {
   const hoverMap = {
     'primary-blue': {
-      solid: 'enabled:hover:bg-blue-700 enabled:active:bg-blue-800 enabled:hover:border-blue-700 enabled:active:border-blue-800 shadow-atam-on-hover',
-      outline: 'enabled:hover:bg-blue-50 enabled:active:bg-blue-100 enabled:hover:text-blue-700 enabled:active:text-blue-800 shadow-atam-on-hover ',
+      solid: 'enabled:hover:bg-blue-500 enabled:active:bg-blue-800 enabled:hover:border-blue-500 enabled:active:border-blue-800 shadow-atam-on-hover',
+      outline: 'enabled:hover:bg-blue-50 enabled:active:bg-blue-100 enabled:hover:text-blue-500 enabled:active:text-blue-800 shadow-atam-on-hover ',
     },
     'primary-green': {
-      solid: 'enabled:hover:bg-green-700 enabled:active:bg-green-800 enabled:hover:border-green-700 enabled:active:border-green-800 shadow-atam-on-hover',
-      outline: 'enabled:hover:bg-green-50 enabled:active:bg-green-100 enabled:hover:text-green-700 enabled:active:text-green-800 shadow-atam-on-hover',
+      solid: 'enabled:hover:bg-green-500 enabled:active:bg-green-800 enabled:hover:border-green-500 enabled:active:border-green-800 shadow-atam-on-hover',
+      outline: 'enabled:hover:bg-green-50 enabled:active:bg-green-100 enabled:hover:text-green-500 enabled:active:text-green-800 shadow-atam-on-hover',
     },
     'primary-red': {
-      solid: 'enabled:hover:bg-red-700 enabled:active:bg-red-800 enabled:hover:border-red-700 enabled:active:border-red-800 shadow-atam-on-hover',
-      outline: 'enabled:hover:bg-red-50 enabled:active:bg-red-100 enabled:hover:text-red-700 enabled:active:text-red-800 shadow-atam-on-hover',
+      solid: 'enabled:hover:bg-red-500 enabled:active:bg-red-800 enabled:hover:border-red-500 enabled:active:border-red-800 shadow-atam-on-hover',
+      outline: 'enabled:hover:bg-red-50 enabled:active:bg-red-100 enabled:hover:text-red-500 enabled:active:text-red-800 shadow-atam-on-hover',
     },
   }
 

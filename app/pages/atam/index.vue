@@ -18,10 +18,11 @@ onMounted(() => {
 
 <template>
   <div class="relative min-h-screen bg-[linear-gradient(to_bottom,_#ffffff_0%,_#ffffff_50%,_#10b981_50%,_#10b981_100%)] dark:bg-[linear-gradient(to_bottom,_#000_0%,_#000_50%,_#10b981_50%,_#10b981_100%)] overflow-hidden px-6">
-    <div class="grid grid-cols-2 gap-4">
+
+    <div class="grid grid-cols-2 gap-4 z-50">
       <div class="col-span-2">
         <div class="grid grid-cols-4 gap-4">
-          <AtamCard class="col-span-3" severity="orange">
+          <AtamCard class="col-span-3" severity="orange" :outline="true" :shadow="true">
             <template #content>
               <div class="flex gap-8">
                 <img
@@ -42,20 +43,22 @@ onMounted(() => {
               </div>
             </template>
           </AtamCard>
-          <AtamCard class="" severity="purple">
+          <AtamCard class="" severity="cyan" :outline="true" :shadow="true">
+            <template #header>
+              <h2>Subscribe</h2>
+            </template>
             <template #content>
               <div class="text-center">
+                <i class=""></i>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod recusandae voluptatibus amet dolorum
-                  doloribus quia commodi accusamus ab enim itaque incidunt nulla error corporis eveniet odit quae, illum
-                  inventore sed.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </p>
               </div>
             </template>
           </AtamCard>
         </div>
       </div>
-      <AtamCard severity="purple">
+      <AtamCard severity="cyan">
         <template #content>
           <h2>Please Subscribe</h2>
           <p>
@@ -84,7 +87,7 @@ onMounted(() => {
       </AtamCard>
       <div class="col-span-2">
         <div class="grid grid-cols-4 gap-4">
-          <AtamCard severity="primary" class="rounded-full" :hover="true">
+          <AtamCard severity="orange" class="rounded-full" :hover="true">
             <template #content>
               <div class="flex gap-2 justify-center items-center">
                 <span><i class="i-mdi-treasure-chest text-2xl" /></span>
@@ -95,7 +98,7 @@ onMounted(() => {
             </template>
           </AtamCard>
 
-          <AtamCard severity="primary" class="rounded-full" :hover="true">
+          <AtamCard severity="orange" class="rounded-full" :hover="true">
             <template #content>
               <div class="flex gap-2 justify-center items-center">
                 <span><i class="i-mdi-treasure-chest text-2xl" /></span>
@@ -106,7 +109,7 @@ onMounted(() => {
             </template>
           </AtamCard>
 
-          <AtamCard severity="primary" class="rounded-full" :hover="true">
+          <AtamCard severity="orange" class="rounded-full" :hover="true" :outline="true">
             <template #content>
               <div class="flex gap-2 justify-center items-center">
                 <span><i class="i-mdi-treasure-chest text-2xl" /></span>
@@ -117,7 +120,7 @@ onMounted(() => {
             </template>
           </AtamCard>
 
-          <AtamCard severity="primary" class="rounded-full" :hover="true">
+          <AtamCard severity="orange" class="rounded-full" :hover="true" :outline="true">
             <template #content>
               <div class="flex gap-2 justify-center items-center">
                 <span><i class="i-mdi-treasure-chest text-2xl" /></span>
