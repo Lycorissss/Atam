@@ -4,10 +4,8 @@ import { ref } from 'vue'
 const copied = ref<string | null>(null)
 const selectedSeverity = ref<string>('blue')
 
-const severityOptions = [
+const rawSeverity = [
   'primary',
-  'primary-green',
-  'primary-red',
   'blue',
   'green',
   'red',
@@ -16,6 +14,14 @@ const severityOptions = [
   'orange',
   'gray',
 ]
+
+const severityOptions = ref(
+  rawSeverity.map(opt => ({
+    label: // kapitalisasi kata pertama (Primary, Blue, …)
+      opt.charAt(0).toUpperCase() + opt.slice(1),
+    value: opt
+  }))
+)
 
 const examples = {
   basic: `<AtamCard>
@@ -144,10 +150,8 @@ function copyToClipboard(code: string, id: string) {
       </AtamCard>
 
       <div class="mt-4 relative bg-gray-100 rounded-lg p-3 text-sm font-mono">
-        <button
-          class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
-          @click="copyToClipboard(examples.basic, 'basic')"
-        >
+        <button class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
+          @click="copyToClipboard(examples.basic, 'basic')">
           {{ copied === 'basic' ? 'Copied!' : 'Copy' }}
         </button>
         <code>{{ examples.basic }}</code>
@@ -169,10 +173,8 @@ function copyToClipboard(code: string, id: string) {
       </AtamCard>
 
       <div class="mt-4 relative bg-gray-100 rounded-lg p-3 text-sm font-mono">
-        <button
-          class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
-          @click="copyToClipboard(examples.outline, 'outline')"
-        >
+        <button class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
+          @click="copyToClipboard(examples.outline, 'outline')">
           {{ copied === 'outline' ? 'Copied!' : 'Copy' }}
         </button>
         <code>{{ examples.outline }}</code>
@@ -194,10 +196,8 @@ function copyToClipboard(code: string, id: string) {
       </AtamCard>
 
       <div class="mt-4 relative bg-gray-100 rounded-lg p-3 text-sm font-mono">
-        <button
-          class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
-          @click="copyToClipboard(examples.shadow, 'shadow')"
-        >
+        <button class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
+          @click="copyToClipboard(examples.shadow, 'shadow')">
           {{ copied === 'shadow' ? 'Copied!' : 'Copy' }}
         </button>
         <code>{{ examples.shadow }}</code>
@@ -219,10 +219,8 @@ function copyToClipboard(code: string, id: string) {
       </AtamCard>
 
       <div class="mt-4 relative bg-gray-100 rounded-lg p-3 text-sm font-mono">
-        <button
-          class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
-          @click="copyToClipboard(examples.hover, 'hover')"
-        >
+        <button class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
+          @click="copyToClipboard(examples.hover, 'hover')">
           {{ copied === 'hover' ? 'Copied!' : 'Copy' }}
         </button>
         <code>{{ examples.hover }}</code>
@@ -242,14 +240,8 @@ function copyToClipboard(code: string, id: string) {
       <!-- Dropdown untuk pilih severity -->
       <div class="mb-4">
         <label class="block text-sm font-medium text-gray-700 mb-2">Pilih Severity:</label>
-        <select
-          v-model="selectedSeverity"
-          class="border border-gray-300 rounded px-3 py-2 bg-white"
-        >
-          <option v-for="option in severityOptions" :key="option" :value="option">
-            {{ option }}
-          </option>
-        </select>
+        <AtamSelect v-model="selectedSeverity" :options="severityOptions" optionLabel="label" optionValue="value"
+          placeholder="Pilih severity" unstyled label="Severity" hint="Wajib diisi" required />
       </div>
 
       <AtamCard :severity="selectedSeverity">
@@ -259,10 +251,8 @@ function copyToClipboard(code: string, id: string) {
       </AtamCard>
 
       <div class="mt-4 relative bg-gray-100 rounded-lg p-3 text-sm font-mono">
-        <button
-          class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
-          @click="copyToClipboard(getSeverityExample(selectedSeverity), 'severity')"
-        >
+        <button class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
+          @click="copyToClipboard(getSeverityExample(selectedSeverity), 'severity')">
           {{ copied === 'severity' ? 'Copied!' : 'Copy' }}
         </button>
         <code>{{ getSeverityExample(selectedSeverity) }}</code>
@@ -295,10 +285,8 @@ function copyToClipboard(code: string, id: string) {
       </AtamCard>
 
       <div class="mt-4 relative bg-gray-100 rounded-lg p-3 text-sm font-mono">
-        <button
-          class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
-          @click="copyToClipboard(examples.full, 'full')"
-        >
+        <button class="absolute top-2 right-2 text-xs bg-white border px-2 py-1 rounded hover:bg-gray-200"
+          @click="copyToClipboard(examples.full, 'full')">
           {{ copied === 'full' ? 'Copied!' : 'Copy' }}
         </button>
         <code>{{ examples.full }}</code>
@@ -311,7 +299,10 @@ function copyToClipboard(code: string, id: string) {
         Penjelasan Properti
       </h2>
       <ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
-        <li><code>severity</code>: Warna/tema background card. Opsi tersedia: <code>primary-blue</code>, <code>primary-green</code>, <code>primary-red</code>, <code>blue</code>, <code>green</code>, <code>red</code>, <code>yellow</code>, <code>purple</code>, <code>orange</code>, <code>gray</code>.</li>
+        <li><code>severity</code>: Warna/tema background card. Opsi tersedia: <code>primary-blue</code>,
+          <code>primary-green</code>, <code>primary-red</code>, <code>blue</code>, <code>green</code>, <code>red</code>,
+          <code>yellow</code>, <code>purple</code>, <code>orange</code>, <code>gray</code>.
+        </li>
         <li><code>shadow</code>: Aktifkan efek bayangan statis pada card.</li>
         <li><code>outline</code>: Aktifkan border hitam tebal di sekeliling card.</li>
         <li><code>hover</code>: Aktifkan efek shadow hanya saat card di-hover.</li>
